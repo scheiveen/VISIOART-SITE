@@ -113,9 +113,9 @@ export const mockProcess = [
 ];
 
 export const statsData = [
-  { number: "150+", label: "Projetos Realizados" },
-  { number: "8", label: "Anos de Experiência" },
-  { number: "100%", label: "Clientes Satisfeitos" }
+  { number: "150+", label: "PROJETOS REALIZADOS" },
+  { number: "8", label: "ANOS DE EXPERIÊNCIA" },
+  { number: "100%", label: "CLIENTES SATISFEITOS" }
 ];
 
 export const contactInfo = {

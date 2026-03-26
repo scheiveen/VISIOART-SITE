@@ -29,10 +29,10 @@
 
 .about-text {
   font-family: var(--serif);
-  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
   line-height: 1.75;
   color: rgba(245, 242, 238, 0.8);
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 }
 
 .about-text p {
@@ -51,26 +51,30 @@
 .about-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 4rem;
+  margin-top: 4rem;
 }
 
 .stat {
   padding: 2rem 0;
-  border-top: 1px solid rgba(245, 242, 238, 0.1);
+  border-top: 1px solid rgba(245, 242, 238, 0.15);
+  text-align: center;
 }
 
 .stat-number {
   font-family: var(--display);
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(3.5rem, 6vw, 5.5rem);
   color: var(--accent);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  line-height: 1;
 }
 
 .stat-label {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   color: var(--gray-light);
+  line-height: 1.4;
 }
 
 @media (max-width: 1024px) {
