@@ -54,6 +54,26 @@ nav.scrolled {
     padding: 1.5rem 2rem;
   }
 
+  nav.scrolled {
+    justify-content: center;
+  }
+
+  .nav-logo {
+    z-index: 10;
+  }
+
+  nav.scrolled .nav-logo {
+    margin: 0 auto;
+  }
+
+  .logo-img {
+    height: 70px;
+  }
+
+  nav.scrolled .logo-img {
+    height: 80px;
+  }
+
   .nav-links {
     display: none;
   }
