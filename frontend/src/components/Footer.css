@@ -8,9 +8,14 @@
 }
 
 .footer-logo {
-  font-family: var(--display);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo-img {
+  height: clamp(40px, 5vw, 55px);
+  width: auto;
+  filter: brightness(0) invert(1);
 }
 
 .footer-copy {

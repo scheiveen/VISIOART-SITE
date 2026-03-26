@@ -15,7 +15,13 @@ const Navbar = () => {
 
   return (
     <nav className={scrolled ? 'scrolled' : ''}>
-      <a href="#hero" className="nav-logo">VISIOART</a>
+      <a href="#hero" className="nav-logo">
+        <img 
+          src="https://customer-assets.emergentagent.com/job_visioart-films/artifacts/bd2tb04l_5.png" 
+          alt="VISIOART" 
+          className="logo-img"
+        />
+      </a>
       <ul className="nav-links">
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#servicos">Serviços</a></li>
