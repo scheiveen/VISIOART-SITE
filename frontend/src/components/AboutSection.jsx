@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { statsData } from '../data/mock';
-import './AboutSection.css';
+import React, { useEffect, useRef } from "react";
+import { statsData } from "../data/mock";
+import "./AboutSection.css";
 
 const AboutSection = () => {
   const sectionRef = useRef(null);
@@ -10,13 +10,13 @@ const AboutSection = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.reveal').forEach((el) => {
-              el.classList.add('revealed');
+            entry.target.querySelectorAll(".reveal").forEach((el) => {
+              el.classList.add("revealed");
             });
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -37,13 +37,13 @@ const AboutSection = () => {
         <div className="about-right reveal reveal-delay-1">
           <div className="about-text">
             <p>
-              Na <strong>VISIOART</strong>, cada frame conta uma história. 
-              Somos uma produtora audiovisual que une <em>arte, técnica e emoção</em> 
+              Na <strong>VISIOART</strong>, cada frame conta uma história. Somos
+              uma produtora audiovisual que une <em>arte, técnica e emoção</em>
               para criar filmes que transcendem o comum.
             </p>
             <p>
-              Com anos de experiência no mercado, especializamo-nos em capturar 
-              momentos únicos e transformá-los em <strong>narrativas cinematográficas</strong> 
+              Especializamo-nos em capturar momentos únicos e transformá-los em{" "}
+              <strong>narrativas cinematográficas</strong>
               que permanecem na memória.
             </p>
           </div>
