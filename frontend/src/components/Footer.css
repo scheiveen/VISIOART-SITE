@@ -13,7 +13,7 @@
 }
 
 .footer-logo-img {
-  height: clamp(40px, 5vw, 55px);
+  height: clamp(55px, 7vw, 75px);
   width: auto;
   filter: brightness(0) invert(1);
 }
