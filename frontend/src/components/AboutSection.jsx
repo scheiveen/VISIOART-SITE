@@ -32,6 +32,13 @@ const AboutSection = () => {
         <div className="about-left reveal">
           <span className="section-label">Quem Somos</span>
           <h2 className="section-title">Sobre a VISIOART</h2>
+          <div className="about-logo">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_visioart-films/artifacts/bd2tb04l_5.png" 
+              alt="VISIOART Logo" 
+              className="about-logo-img"
+            />
+          </div>
         </div>
 
         <div className="about-right reveal reveal-delay-1">
