@@ -1,218 +1,135 @@
-// Mock data for VISIOART website
+// Mock data based on the original HTML design
 
 export const mockServices = [
   {
     id: 1,
-    title: "Vídeos Institucionais",
-    description: "Filmes que fortalecem identidade corporativa e posicionamento de marca com direção criativa e narrativa estratégica.",
-    icon: "Building2"
+    num: "01",
+    icon: "💍",
+    name: "Vídeos de Casamento",
+    desc: "Registro cinematográfico do dia mais importante com storytelling emocional"
   },
   {
     id: 2,
-    title: "Conteúdo para Marcas",
-    description: "Produções audiovisuais que elevam percepção de valor e geram conexão autêntica com o público.",
-    icon: "Sparkles"
+    num: "02",
+    icon: "🎉",
+    name: "Eventos Corporativos",
+    desc: "Cobertura profissional de convenções, lançamentos e festas empresariais"
   },
   {
     id: 3,
-    title: "Reels e Vídeos Verticais",
-    description: "Conteúdo otimizado para redes sociais com linguagem cinematográfica e impacto visual.",
-    icon: "Smartphone"
+    num: "03",
+    icon: "🎬",
+    name: "Filmes Institucionais",
+    desc: "Produções que fortalecem identidade corporativa e posicionamento de marca"
   },
   {
     id: 4,
-    title: "Cobertura de Eventos",
-    description: "Registro cinematográfico de momentos especiais com edição premium e storytelling emocional.",
-    icon: "Calendar"
+    num: "04",
+    icon: "📱",
+    name: "Conteúdo Digital",
+    desc: "Vídeos otimizados para redes sociais com impacto visual e engajamento"
   },
   {
     id: 5,
-    title: "Filmes de Campanha",
-    description: "Produções publicitárias com conceito forte, direção de cena e execução profissional.",
-    icon: "Film"
+    num: "05",
+    icon: "🎭",
+    name: "Publicidade",
+    desc: "Campanhas comerciais com conceito criativo e execução premium"
   },
   {
     id: 6,
-    title: "Construção Civil e Empreendimentos",
-    description: "Filmes técnicos e promocionais que valorizam projetos imobiliários e obras com estética premium.",
-    icon: "Hammer"
-  },
-  {
-    id: 7,
-    title: "Storytelling de Marca",
-    description: "Narrativas audiovisuais que transformam marcas em histórias memoráveis e impactantes.",
-    icon: "BookOpen"
-  },
-  {
-    id: 8,
-    title: "Pós-produção Cinematográfica",
-    description: "Edição, color grading e finalização com padrão de qualidade cinematográfico.",
-    icon: "Clapperboard"
+    num: "06",
+    icon: "🏗️",
+    name: "Construção Civil",
+    desc: "Filmes técnicos e promocionais para empreendimentos e obras"
   }
 ];
 
-export const mockDifferentials = [
+export const mockPortfolio = [
   {
     id: 1,
-    title: "Direção Criativa Aplicada ao Negócio",
-    description: "Cada projeto nasce com conceito, intenção e linguagem própria."
+    tag: "Casamento",
+    title: "Ana & Carlos",
+    image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200",
+    featured: true
   },
   {
     id: 2,
-    title: "Linguagem Cinematográfica",
-    description: "Estética refinada que eleva qualquer produção ao patamar premium."
+    tag: "Institucional",
+    title: "Tech Corp",
+    image: "https://images.unsplash.com/photo-1597465103212-7cd0b847a246?w=800"
   },
   {
     id: 3,
-    title: "Produção Estratégica",
-    description: "Planejamento detalhado que garante eficiência e resultado final impecável."
+    tag: "Evento",
+    title: "Summit 2025",
+    image: "https://images.pexels.com/photos/6621438/pexels-photo-6621438.jpeg?w=800"
   },
   {
     id: 4,
-    title: "Captação Profissional",
-    description: "Equipamentos de cinema e equipe técnica especializada."
+    tag: "Comercial",
+    title: "Marca Premium",
+    image: "https://images.unsplash.com/photo-1570834322056-ba3e2994ab85?w=800"
   },
   {
     id: 5,
-    title: "Edição com Estética Premium",
-    description: "Pós-produção cinematográfica com color grading e finalização de alto nível."
-  },
-  {
-    id: 6,
-    title: "Atendimento Personalizado",
-    description: "Acompanhamento próximo em todas as etapas do projeto."
+    tag: "Construção",
+    title: "Residencial Alto Padrão",
+    image: "https://images.unsplash.com/photo-1612544409025-e1f6a56c1152?w=800"
   }
 ];
 
 export const mockProcess = [
   {
     id: 1,
-    number: "01",
-    title: "Estratégia",
-    description: "Entendimento do negócio, público e objetivos da produção."
+    num: "01",
+    name: "Briefing e Conceito",
+    desc: "Entendemos seu projeto, público-alvo e objetivos para criar uma narrativa única"
   },
   {
     id: 2,
-    number: "02",
-    title: "Conceito",
-    description: "Desenvolvimento criativo e definição da linguagem visual."
+    num: "02",
+    name: "Planejamento",
+    desc: "Desenvolvemos roteiro, storyboard e logística completa da produção"
   },
   {
     id: 3,
-    number: "03",
-    title: "Pré-produção",
-    description: "Planejamento técnico, locações, equipe e roteiro."
+    num: "03",
+    name: "Produção",
+    desc: "Captação com equipamento profissional e equipe técnica especializada"
   },
   {
     id: 4,
-    number: "04",
-    title: "Captação",
-    description: "Filmagem com equipamento profissional e direção de cena."
+    num: "04",
+    name: "Pós-produção",
+    desc: "Edição cinematográfica, color grading e finalização de alto padrão"
   },
   {
     id: 5,
-    number: "05",
-    title: "Pós-produção",
-    description: "Edição, color grading, motion graphics e trilha sonora."
-  },
-  {
-    id: 6,
-    number: "06",
-    title: "Entrega",
-    description: "Finalização nos formatos adequados e suporte pós-entrega."
+    num: "05",
+    name: "Entrega",
+    desc: "Filmes finalizados nos formatos adequados com suporte pós-entrega"
   }
 ];
 
-export const mockCases = [
-  {
-    id: 1,
-    title: "Vídeo Institucional Tech",
-    category: "Marcas",
-    description: "Filme institucional para empresa de tecnologia com storytelling estratégico.",
-    image: "https://images.unsplash.com/photo-1597465103212-7cd0b847a246",
-    tags: ["Institucional", "Marcas"]
-  },
-  {
-    id: 2,
-    title: "Cobertura Evento Corporativo",
-    category: "Eventos",
-    description: "Registro cinematográfico de convenção empresarial com mais de 500 participantes.",
-    image: "https://images.pexels.com/photos/6621438/pexels-photo-6621438.jpeg",
-    tags: ["Eventos", "Corporativo"]
-  },
-  {
-    id: 3,
-    title: "Campanha Lançamento Imobiliário",
-    category: "Construção Civil",
-    description: "Filme promocional de alto padrão para empreendimento residencial premium.",
-    image: "https://images.unsplash.com/photo-1612544409025-e1f6a56c1152",
-    tags: ["Imobiliário", "Campanha"]
-  },
-  {
-    id: 4,
-    title: "Conteúdo Digital para Marca",
-    category: "Marcas",
-    description: "Série de reels e vídeos verticais com identidade visual forte.",
-    image: "https://images.unsplash.com/photo-1570834322056-ba3e2994ab85",
-    tags: ["Social Media", "Marcas"]
-  },
-  {
-    id: 5,
-    title: "Filme de Marca",
-    category: "Storytelling",
-    description: "Narrativa emocional que posiciona marca no mercado premium.",
-    image: "https://images.unsplash.com/photo-1614760522172-2c2d660427b4",
-    tags: ["Storytelling", "Marcas"]
-  },
-  {
-    id: 6,
-    title: "Pós-produção Cinematográfica",
-    category: "Pós-produção",
-    description: "Color grading e finalização premium para produção independente.",
-    image: "https://images.unsplash.com/photo-1574717025058-2f8737d2e2b7",
-    tags: ["Pós-produção", "Cinema"]
-  }
-];
-
-export const mockTestimonials = [
-  {
-    id: 1,
-    name: "Carlos Mendes",
-    company: "Tech Solutions Brasil",
-    role: "Diretor de Marketing",
-    text: "A VISIOART transformou nossa comunicação. O vídeo institucional superou todas as expectativas e elevou nossa percepção de marca.",
-    avatar: null
-  },
-  {
-    id: 2,
-    name: "Marina Costa",
-    company: "Construtora Premium",
-    role: "Gerente Comercial",
-    text: "Profissionalismo e qualidade cinematográfica em cada detalhe. Os filmes dos nossos empreendimentos se tornaram nossa principal ferramenta de vendas.",
-    avatar: null
-  },
-  {
-    id: 3,
-    name: "Ricardo Almeida",
-    company: "Agência Criativa",
-    role: "CEO",
-    text: "Parceria que faz diferença. A VISIOART entrega não apenas vídeos, mas soluções estratégicas com linguagem premium.",
-    avatar: null
-  }
-];
-
-export const mockClients = [
-  "Tech Solutions",
-  "Construtora Premium",
-  "Agência Criativa",
-  "Eventos Excellence",
-  "Marca Fashion",
-  "Corporativo Group"
+export const statsData = [
+  { number: "150+", label: "Projetos Realizados" },
+  { number: "8", label: "Anos de Experiência" },
+  { number: "100%", label: "Clientes Satisfeitos" }
 ];
 
 export const contactInfo = {
   whatsapp: "+5548999478281",
+  whatsappDisplay: "+55 (48) 99947-8281",
   email: "contato@visioart.com.br",
   instagram: "@visioart",
   location: "Florianópolis, SC"
 };
+
+export const marqueeText = [
+  "STORYTELLING",
+  "CINEMA",
+  "EMOÇÃO",
+  "CRIATIVIDADE",
+  "PRODUÇÃO"
+];

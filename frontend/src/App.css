@@ -1,34 +1,39 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+.App {
+  min-height: 100vh;
+  background: var(--black);
+  color: var(--white);
+  cursor: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+main {
+  position: relative;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Override default cursor for the entire app */
+* {
+  cursor: none !important;
 }
 
-.App-link {
-    color: #61dafb;
+/* But allow pointer for interactive elements visually */
+a:hover,
+button:hover,
+.service-card:hover,
+.portfolio-item:hover,
+.process-step:hover {
+  /* Visual feedback handled by custom cursor */
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+@media (max-width: 768px) {
+  .App {
+    cursor: auto;
+  }
+
+  * {
+    cursor: auto !important;
+  }
+
+  .cursor,
+  .cursor-ring {
+    display: none;
+  }
 }

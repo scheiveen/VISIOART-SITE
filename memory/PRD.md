@@ -1,309 +1,234 @@
-# VISIOART - Site Institucional Premium
+# VISIOART - Site Institucional Premium (VERSÃO 2.0)
 ## Product Requirements Document
 
 **Data de Criação:** 26/03/2026  
-**Última Atualização:** 26/03/2026  
-**Status:** MVP Frontend Concluído com Mock Data
+**Última Atualização:** 26/03/2026 - 18:20  
+**Status:** MVP Frontend Completo - Design Base Implementado
 
 ---
 
 ## 1. VISÃO GERAL DO PROJETO
 
 ### Objetivo
-Criar um site institucional premium, cinematográfico e altamente profissional para a produtora audiovisual VISIOART, posicionando-a como uma empresa de produção audiovisual de alto nível.
+Site institucional premium baseado no design HTML fornecido pelo cliente, com estética cinematográfica sofisticada e interatividade avançada.
 
 ### Slogan Oficial
-**"FROM VISION TO CINEMA"**
-- Sempre em caixa alta
-- Usado como assinatura da marca
-- Aparece no hero e footer
-
-### Posicionamento
-- Produtora audiovisual premium
-- Especialista em transformar ideias em produções cinematográficas
-- Focada em storytelling, direção criativa e impacto visual
-- Parceira de marcas que querem elevar sua imagem
+**"FROM VISION TO CINEMA"** / **"DA VISÃO AO CINEMA"**
 
 ---
 
-## 2. STACK TECNOLÓGICO
+## 2. DESIGN SYSTEM (BASEADO NO HTML FORNECIDO)
 
-### Frontend
-- **Framework:** React 19.0.0
-- **Styling:** TailwindCSS + Custom CSS
-- **Componentes:** Shadcn UI
-- **Ícones:** Lucide React
-- **Tipografia:** Google Fonts (Inter + Playfair Display)
-- **Roteamento:** React Router DOM
-- **Formulários:** React Hook Form + Zod
-- **HTTP Client:** Axios
+### Paleta de Cores
+- **Backgrounds:** `#080808` (black), `#1a1a1a` (gray-dark)
+- **Text:** `#f5f2ee` (white), `#888` (gray-light)
+- **Accent:** `#c8b89a` (dourado/bronze suave)
 
-### Backend (Planejado)
-- **Framework:** FastAPI
-- **Database:** MongoDB (Motor)
-- **Email Service:** SendGrid
-- **Validação:** Pydantic
+### Tipografia
+- **Display:** Bebas Neue - Headings principais, logo, títulos
+- **Serif:** Cormorant Garamond - Subtítulos, ênfases, textos elegantes
+- **Body:** DM Sans - Corpo de texto, descrições
+
+### Efeitos Especiais
+- Custom cursor com anel (mix-blend-mode: difference)
+- Scroll reveal animations
+- Marquee infinito
+- Grain/noise texture no hero
+- mix-blend-mode no navbar
 
 ---
 
-## 3. ARQUITETURA E ESTRUTURA
+## 3. COMPONENTES IMPLEMENTADOS
 
-### Páginas/Seções Implementadas
-1. ✅ **Header** - Navegação fixa com logo VISIOART
-2. ✅ **Hero Section** - Tela cheia com headline impactante
-3. ✅ **Manifesto** - Declaração de propósito da marca
-4. ✅ **Sobre** - Apresentação da produtora
-5. ✅ **Serviços** - 8 serviços em grid (cards)
-6. ✅ **Diferenciais** - 6 diferenciais da VISIOART
-7. ✅ **Cases** - Portfolio com 6 projetos (lightbox)
-8. ✅ **Processo** - 6 etapas de trabalho
-9. ✅ **Depoimentos** - 3 testemunhos de clientes
-10. ✅ **Clientes** - Logos de 6 clientes
-11. ✅ **Contato** - Formulário + WhatsApp direto
-12. ✅ **Footer** - Links, contato e slogan
+### Core Components
+- ✅ `CustomCursor.jsx` - Cursor personalizado com anel
+- ✅ `Navbar.jsx` - Navegação fixa com mix-blend-mode
+- ✅ `HeroSection.jsx` - Hero full-screen com efeitos
+- ✅ `Marquee.jsx` - Texto scrolling infinito
+- ✅ `AboutSection.jsx` - Grid 2 colunas + stats
+- ✅ `ServicesSection.jsx` - Grid 3 colunas de serviços
+- ✅ `PortfolioSection.jsx` - Grid assimétrico (primeiro item grande)
+- ✅ `ProcessSection.jsx` - Lista de passos em grid
+- ✅ `ContactSection.jsx` - Contato centralizado
+- ✅ `Footer.jsx` - Footer minimalista
 
-### Componentes Criados
+---
+
+## 4. FUNCIONALIDADES IMPLEMENTADAS
+
+### Interatividade
+- [x] Custom cursor com expansão em elementos interativos
+- [x] Scroll reveal animations em todas as seções
+- [x] Smooth scroll navigation
+- [x] Navbar background change on scroll
+- [x] Marquee animation contínuo
+- [x] Hover effects em cards, portfolio items, process steps
+- [x] WhatsApp direct link
+- [x] Email link (mailto)
+- [x] Instagram link
+
+### Visual Effects
+- [x] Grain/noise texture no hero
+- [x] Radial gradients como light sources
+- [x] Animated line no hero
+- [x] Portfolio images com grayscale que remove no hover
+- [x] Service cards com underline animation
+- [x] Process steps com número que anima no hover
+
+---
+
+## 5. ESTRUTURA DE ARQUIVOS
+
 ```
 /app/frontend/src/
 ├── components/
-│   ├── Header.jsx
-│   ├── HeroSection.jsx
-│   ├── ManifestoSection.jsx
-│   ├── AboutSection.jsx
-│   ├── ServicesSection.jsx
-│   ├── DifferentialsSection.jsx
-│   ├── CasesSection.jsx (com Dialog/Lightbox)
-│   ├── ProcessSection.jsx
-│   ├── TestimonialsSection.jsx
-│   ├── ClientsSection.jsx
-│   ├── ContactSection.jsx (com WhatsApp integration)
-│   └── Footer.jsx
+│   ├── CustomCursor.jsx + (sem CSS - inline styles)
+│   ├── Navbar.jsx + Navbar.css
+│   ├── HeroSection.jsx + HeroSection.css
+│   ├── Marquee.jsx + Marquee.css
+│   ├── AboutSection.jsx + AboutSection.css
+│   ├── ServicesSection.jsx + ServicesSection.css
+│   ├── PortfolioSection.jsx + PortfolioSection.css
+│   ├── ProcessSection.jsx + ProcessSection.css
+│   ├── ContactSection.jsx + ContactSection.css
+│   └── Footer.jsx + Footer.css
 ├── data/
-│   └── mock.js (todos os dados mockados)
-└── App.js (integração de todas as seções)
+│   └── mock.js (dados mockados)
+├── App.js
+├── App.css
+└── index.css (CSS global + variables)
 ```
 
 ---
 
-## 4. DADOS MOCKADOS (mock.js)
+## 6. DADOS MOCKADOS
 
-### Serviços (8)
-- Vídeos Institucionais
-- Conteúdo para Marcas
-- Reels e Vídeos Verticais
-- Cobertura de Eventos
-- Filmes de Campanha
-- Construção Civil e Empreendimentos
-- Storytelling de Marca
-- Pós-produção Cinematográfica
+### Serviços (6)
+1. Vídeos de Casamento 💍
+2. Eventos Corporativos 🎉
+3. Filmes Institucionais 🎬
+4. Conteúdo Digital 📱
+5. Publicidade 🎭
+6. Construção Civil 🏗️
 
-### Cases (6)
-- Vídeo Institucional Tech
-- Cobertura Evento Corporativo
-- Campanha Lançamento Imobiliário
-- Conteúdo Digital para Marca
-- Filme de Marca
-- Pós-produção Cinematográfica
+### Portfolio (5 projetos)
+- Ana & Carlos (Casamento) - Featured
+- Tech Corp (Institucional)
+- Summit 2025 (Evento)
+- Marca Premium (Comercial)
+- Residencial Alto Padrão (Construção)
 
-### Depoimentos (3)
-- Carlos Mendes (Tech Solutions Brasil)
-- Marina Costa (Construtora Premium)
-- Ricardo Almeida (Agência Criativa)
+### Processo (5 etapas)
+1. Briefing e Conceito
+2. Planejamento
+3. Produção
+4. Pós-produção
+5. Entrega
 
-### Clientes (6)
-- Tech Solutions
-- Construtora Premium
-- Agência Criativa
-- Eventos Excellence
-- Marca Fashion
-- Corporativo Group
+### Estatísticas
+- 150+ Projetos Realizados
+- 8 Anos de Experiência
+- 100% Clientes Satisfeitos
 
 ---
 
-## 5. DESIGN SYSTEM
+## 7. DIFERENÇAS DO DESIGN ORIGINAL
 
-### Paleta de Cores
-- **Background:** Black (#000) / Neutral-950
-- **Text:** White (#FFF) / White variants
-- **Accent:** White para CTAs
+### Implementado Exatamente Como HTML Base:
+- ✅ Custom cursor
+- ✅ Tipografia (Bebas Neue + Cormorant Garamond + DM Sans)
+- ✅ Cor de accent (#c8b89a)
+- ✅ Marquee scrolling
+- ✅ Grid de portfolio assimétrico
+- ✅ Processo em formato de lista/grid
+- ✅ Scroll reveal animations
+- ✅ Navbar mix-blend-mode
+- ✅ Grain texture no hero
+- ✅ Estrutura de seções
 
-### Tipografia
-- **Headings:** Playfair Display (700-900)
-- **Body:** Inter (300-700)
-- **Tracking:** Wide spacing para textos premium
-
-### Efeitos Visuais
-- Gradientes escuros sobre imagens
-- Hover transitions suaves (200-300ms)
-- Animações de scroll
-- Glass-morphism em alguns cards
-
----
-
-## 6. INTEGRAÇÕES
-
-### Implementadas (Frontend Only)
-- ✅ WhatsApp Link Direto: +5548999478281
-- ✅ Smooth Scroll Navigation
-- ✅ Lightbox para Cases (Dialog)
-- ✅ Formulário de Contato (sem backend ainda)
-
-### Planejadas (Backend)
-- ⏳ SendGrid para envio de emails
-- ⏳ MongoDB para armazenar contatos
-- ⏳ API de formulário de orçamento
+### Não Implementado (Próximas Fases):
+- ⏳ Menu mobile hamburguer
+- ⏳ Formulário de contato completo
+- ⏳ Backend para envio de emails
 
 ---
 
-## 7. IMAGENS UTILIZADAS
+## 8. TECNOLOGIAS UTILIZADAS
 
-### Hero
-- https://images.unsplash.com/photo-1597465103212-7cd0b847a246
+### Frontend
+- React 19.0.0
+- CSS Modules + Vanilla CSS
+- Google Fonts (Bebas Neue, Cormorant Garamond, DM Sans)
+- Intersection Observer API (scroll reveal)
+- Custom animations (keyframes CSS)
 
-### About
-- https://images.unsplash.com/photo-1614760522172-2c2d660427b4
-
-### Services Background
-- https://images.unsplash.com/photo-1611540881474-bf7c8731bfd2
-
-### Cases (6 imagens)
-- https://images.unsplash.com/photo-1597465103212-7cd0b847a246
-- https://images.pexels.com/photos/6621438/pexels-photo-6621438.jpeg
-- https://images.unsplash.com/photo-1612544409025-e1f6a56c1152
-- https://images.unsplash.com/photo-1570834322056-ba3e2994ab85
-- https://images.unsplash.com/photo-1614760522172-2c2d660427b4
-- https://images.unsplash.com/photo-1574717025058-2f8737d2e2b7
+### Não Utilizado (Removido para simplicidade)
+- ❌ Shadcn UI components
+- ❌ TailwindCSS classes
+- ❌ React Hook Form
+- ✅ CSS puro para fidelidade ao design base
 
 ---
 
-## 8. FUNCIONALIDADES IMPLEMENTADAS
+## 9. CONTATO E LINKS
 
-### Navegação
-- [x] Menu fixo responsivo
-- [x] Scroll suave para seções
-- [x] Mobile menu hamburguer
-
-### Interatividade
-- [x] Hover effects em todos os cards
-- [x] Lightbox para visualizar cases
-- [x] WhatsApp button com mensagem pré-formatada
-- [x] Formulário com validação (frontend)
-
-### Responsividade
-- [x] Mobile-first design
-- [x] Breakpoints: sm, md, lg, xl
-- [x] Grid adaptativo
-
----
-
-## 9. O QUE FALTA IMPLEMENTAR
-
-### Fase 2: Backend Development
-- [ ] Criar API endpoints no FastAPI
-  - POST `/api/contact` - Receber formulário de contato
-  - POST `/api/budget` - Receber solicitação de orçamento
-  - GET `/api/cases` - Listar cases (se dinâmico)
-- [ ] Integrar SendGrid
-  - Configurar SENDGRID_API_KEY
-  - Criar templates de email
-  - Implementar envio de confirmação
-- [ ] MongoDB Schema
-  - Collection: contacts
-  - Collection: budget_requests
-  - Collection: newsletter (futuro)
-- [ ] Validação e sanitização de dados
-- [ ] Rate limiting
-- [ ] CORS configuration
-
-### Fase 3: Melhorias
-- [ ] Animações de scroll (AOS ou Framer Motion)
-- [ ] Lazy loading de imagens
-- [ ] SEO optimization
-  - Meta tags
-  - Open Graph
-  - Structured data
-- [ ] Performance optimization
-  - Image optimization
-  - Code splitting
-  - Caching
-- [ ] Analytics integration (opcional)
-- [ ] Cookie consent (LGPD)
-
-### Fase 4: Conteúdo Real
-- [ ] Substituir cases mockados por projetos reais
-- [ ] Adicionar vídeos reais (showreel)
-- [ ] Fotos profissionais da equipe
-- [ ] Depoimentos com fotos reais
-- [ ] Logos de clientes reais
-
----
-
-## 10. PRIORIDADES (P0/P1/P2)
-
-### P0 - Crítico (MVP)
-- ✅ Frontend completo com todas as seções
-- ✅ Design premium e responsivo
-- ✅ Navegação funcional
-- ⏳ Backend API para formulários
-- ⏳ Integração SendGrid
-
-### P1 - Importante (Pós-MVP)
-- [ ] Conteúdo real (cases, depoimentos, logos)
-- [ ] SEO básico
-- [ ] Performance optimization
-- [ ] Testing (Cypress/Playwright)
-
-### P2 - Desejável (Futuro)
-- [ ] CMS para gerenciar cases
-- [ ] Blog/Notícias
-- [ ] Multi-idioma (PT/EN)
-- [ ] Dark/Light mode toggle
-- [ ] Newsletter signup
-
----
-
-## 11. CONTATO E CONFIGURAÇÕES
-
-### Informações de Contato
+### Informações
 - **WhatsApp:** +5548999478281
 - **Email:** contato@visioart.com.br
 - **Instagram:** @visioart
 - **Localização:** Florianópolis, SC
 
 ### URLs
-- **Frontend:** Port 3000
-- **Backend:** Port 8001
+- **Local:** http://localhost:3000
 - **Preview:** https://7906-03e448db-e7d2-4d77-a0a4-1a3c79d64d00.preview.emergentagent.com
 
 ---
 
-## 12. PRÓXIMOS PASSOS
+## 10. PRÓXIMOS PASSOS
 
-1. **Desenvolvimento Backend**
-   - Criar endpoints FastAPI
-   - Configurar SendGrid
-   - Setup MongoDB collections
-   - Testes de integração
+### Fase Imediata
+- [ ] Validar design com cliente
+- [ ] Substituir imagens por conteúdo real
+- [ ] Ajustar textos e copy
 
-2. **Integração Frontend-Backend**
-   - Conectar formulário de contato
-   - Conectar formulário de orçamento
-   - Tratamento de erros e loading states
-   - Success/error messages
+### Fase 2 - Melhorias Frontend
+- [ ] Menu mobile hamburguer
+- [ ] Formulário de contato com validação
+- [ ] Loading states
+- [ ] Error handling
 
-3. **Testes**
-   - Testing agent para validar fluxos
-   - Testes de formulários
-   - Testes de responsividade
-   - Cross-browser testing
+### Fase 3 - Backend
+- [ ] API FastAPI para formulários
+- [ ] SendGrid integration
+- [ ] MongoDB para armazenar contatos
+- [ ] Admin panel (opcional)
 
-4. **Deploy e Otimização**
-   - Build de produção
-   - Performance audit
-   - SEO audit
-   - Acessibilidade audit
+### Fase 4 - Otimizações
+- [ ] Lazy loading de imagens
+- [ ] Code splitting
+- [ ] SEO optimization
+- [ ] Performance audit
+- [ ] Accessibility audit
+
+---
+
+## 11. CHANGELOG
+
+### v2.0 - 26/03/2026 18:20
+- ✅ COMPLETA RECRIAÇÃO baseada no HTML fornecido
+- ✅ Implementado custom cursor
+- ✅ Todas as seções seguindo design base
+- ✅ Animações e efeitos visuais
+- ✅ Tipografia exata (Bebas Neue + Cormorant Garamond + DM Sans)
+- ✅ Cores exatas do design base
+- ✅ Scroll reveal animations
+- ✅ Marquee infinito
+
+### v1.0 - 26/03/2026 (Anterior)
+- Site inicial com shadcn UI e design diferente
+- Substituído pela versão 2.0 baseada no HTML cliente
 
 ---
 
 **Documento mantido por:** E1 Agent  
-**Última revisão:** 26/03/2026
+**Baseado em:** visioart.html (design fornecido pelo cliente)

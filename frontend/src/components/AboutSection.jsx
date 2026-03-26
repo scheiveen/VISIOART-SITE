@@ -1,39 +1,60 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { statsData } from '../data/mock';
+import './AboutSection.css';
 
 const AboutSection = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.querySelectorAll('.reveal').forEach((el) => {
+              el.classList.add('revealed');
+            });
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="sobre" className="relative py-24 bg-black">
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Image */}
-          <div className="relative h-[400px] lg:h-[600px] overflow-hidden">
-            <img 
-              src="https://images.unsplash.com/photo-1614760522172-2c2d660427b4"
-              alt="Produção VISIOART"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
+    <section id="sobre" className="about-section" ref={sectionRef}>
+      <div className="about-grid">
+        <div className="about-left reveal">
+          <span className="section-label">Quem Somos</span>
+          <h2 className="section-title">Sobre a VISIOART</h2>
+        </div>
+
+        <div className="about-right reveal reveal-delay-1">
+          <div className="about-text">
+            <p>
+              Na <strong>VISIOART</strong>, cada frame conta uma história. 
+              Somos uma produtora audiovisual que une <em>arte, técnica e emoção</em> 
+              para criar filmes que transcendem o comum.
+            </p>
+            <p>
+              Com anos de experiência no mercado, especializamo-nos em capturar 
+              momentos únicos e transformá-los em <strong>narrativas cinematográficas</strong> 
+              que permanecem na memória.
+            </p>
           </div>
 
-          {/* Content */}
-          <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              PRODUÇÃO AUDIOVISUAL COM VISÃO DE MARCA
-            </h2>
-            
-            <div className="h-1 w-24 bg-white"></div>
-            
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed">
-              A VISIOART é uma produtora audiovisual criada para entregar mais do que imagens bonitas.
-            </p>
-            
-            <p className="text-lg md:text-xl text-white/80 leading-relaxed">
-              Unimos direção criativa, narrativa e execução para produzir filmes que fortalecem marcas e registram projetos com presença.
-            </p>
-            
-            <p className="text-lg md:text-xl text-white/70 leading-relaxed font-light italic">
-              Não somos freelancers. Somos uma empresa de produção audiovisual com visão, direção e execução profissional.
-            </p>
+          <div className="about-stats">
+            {statsData.map((stat, index) => (
+              <div key={index} className="stat">
+                <div className="stat-number">{stat.number}</div>
+                <div className="stat-label">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
