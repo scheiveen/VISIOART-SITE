@@ -26,7 +26,7 @@ nav.scrolled {
 }
 
 .logo-img {
-  height: clamp(50px, 7vw, 70px);
+  height: clamp(80px, 10vw, 120px);
   width: auto;
   filter: brightness(0) invert(1);
 }
