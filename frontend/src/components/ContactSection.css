@@ -166,12 +166,20 @@
   text-align: center;
 }
 
+.contact-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
 .contact-method {
   display: flex;
-  align-items: flex-start;
-  gap: 1.25rem;
-  padding: 1.5rem;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  margin-bottom: 0;
   background: transparent;
   border: 1px solid rgba(245, 242, 238, 0.08);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -195,7 +203,7 @@
 .contact-method:hover {
   background: rgba(245, 242, 238, 0.02);
   border-color: rgba(200, 184, 154, 0.2);
-  transform: translateX(4px);
+  transform: translateY(-4px);
 }
 
 .contact-method:hover::before {
@@ -218,7 +226,6 @@
 .contact-icon {
   color: var(--accent);
   flex-shrink: 0;
-  margin-top: 0.25rem;
   transition: color 0.3s ease;
 }
 
@@ -232,6 +239,9 @@
 
 .contact-details {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .contact-details strong {
@@ -276,5 +286,9 @@
 
   .contact-info-box {
     padding: 2rem 1.5rem;
+  }
+
+  .contact-methods-grid {
+    grid-template-columns: 1fr;
   }
 }
