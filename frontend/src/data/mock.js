@@ -7,6 +7,7 @@ export const mockServices = [
     icon: "💍",
     name: "Vídeos de Casamento",
     desc: "Registro cinematográfico do dia mais importante com storytelling emocional",
+    image: "https://images.unsplash.com/photo-1770217614322-0e3bd39ed212?crop=entropy&cs=srgb&fm=jpg&q=85&w=800"
   },
   {
     id: 2,
@@ -14,6 +15,7 @@ export const mockServices = [
     icon: "🎉",
     name: "Eventos Corporativos",
     desc: "Cobertura profissional de convenções, lançamentos e festas empresariais",
+    image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?crop=entropy&cs=srgb&fm=jpg&q=85&w=800"
   },
   {
     id: 3,
@@ -21,6 +23,7 @@ export const mockServices = [
     icon: "🎬",
     name: "Filmes Institucionais",
     desc: "Produções que fortalecem identidade corporativa e posicionamento de marca",
+    image: "https://images.pexels.com/photos/4064838/pexels-photo-4064838.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: 4,
@@ -28,6 +31,7 @@ export const mockServices = [
     icon: "📱",
     name: "Conteúdo Digital",
     desc: "Vídeos otimizados para redes sociais com impacto visual e engajamento",
+    image: "https://images.unsplash.com/photo-1758273239210-59fea02475eb?crop=entropy&cs=srgb&fm=jpg&q=85&w=800"
   },
   {
     id: 5,
@@ -35,6 +39,7 @@ export const mockServices = [
     icon: "🎭",
     name: "Publicidade",
     desc: "Campanhas comerciais com conceito criativo e execução premium",
+    image: "https://images.pexels.com/photos/5878870/pexels-photo-5878870.jpeg?auto=compress&cs=tinysrgb&w=800"
   },
   {
     id: 6,
@@ -42,6 +47,7 @@ export const mockServices = [
     icon: "🏗️",
     name: "Construção Civil",
     desc: "Filmes técnicos e promocionais para empreendimentos e obras",
+    image: "https://images.unsplash.com/photo-1772551419713-302fc638b035?crop=entropy&cs=srgb&fm=jpg&q=85&w=800"
   },
 ];
 

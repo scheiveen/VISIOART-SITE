@@ -38,10 +38,16 @@ const ServicesSection = () => {
       <div className="services-grid">
         {mockServices.map((service, index) => (
           <div key={service.id} className="service-card reveal">
-            <div className="service-num">{service.num}</div>
-            <div className="service-icon">{service.icon}</div>
-            <h3 className="service-name">{service.name}</h3>
-            <p className="service-desc">{service.desc}</p>
+            <div className="service-image">
+              <img src={service.image} alt={service.name} />
+              <div className="service-overlay">
+                <div className="service-num">{service.num}</div>
+              </div>
+            </div>
+            <div className="service-content">
+              <h3 className="service-name">{service.name}</h3>
+              <p className="service-desc">{service.desc}</p>
+            </div>
           </div>
         ))}
       </div>
