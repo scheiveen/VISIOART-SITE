@@ -1,14 +1,15 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, BackgroundTasks, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from pydantic import BaseModel, Field, ConfigDict, EmailStr
+from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
+from emails import send_contact_email, EmailDeliveryError
 
 
 ROOT_DIR = Path(__file__).parent
@@ -36,6 +37,19 @@ class StatusCheck(BaseModel):
 
 class StatusCheckCreate(BaseModel):
     client_name: str
+
+class ContactFormRequest(BaseModel):
+    name: str
+    email: EmailStr
+    phone: str
+    company: Optional[str] = None
+    service: str
+    message: str
+
+class ContactFormResponse(BaseModel):
+    status: str
+    message: str
+
 
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
@@ -65,6 +79,44 @@ async def get_status_checks():
             check['timestamp'] = datetime.fromisoformat(check['timestamp'])
     
     return status_checks
+
+@api_router.post("/contact", response_model=ContactFormResponse)
+async def submit_contact_form(request: ContactFormRequest, background_tasks: BackgroundTasks):
+    """
+    Process contact form submission and send email to visioartprod@gmail.com
+    """
+    try:
+        # Save to database
+        contact_data = request.model_dump()
+        contact_data['id'] = str(uuid.uuid4())
+        contact_data['timestamp'] = datetime.now(timezone.utc).isoformat()
+        contact_data['status'] = 'pending'
+        
+        await db.contacts.insert_one(contact_data)
+        
+        # Send email in background
+        background_tasks.add_task(
+            send_contact_email,
+            request.name,
+            request.email,
+            request.phone,
+            request.company,
+            request.service,
+            request.message
+        )
+        
+        return ContactFormResponse(
+            status="success",
+            message="Mensagem enviada com sucesso!"
+        )
+        
+    except EmailDeliveryError as e:
+        logger.error(f"Email delivery error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Erro ao enviar email")
+    except Exception as e:
+        logger.error(f"Contact form error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Erro ao processar formulário")
+
 
 # Include the router in the main app
 app.include_router(api_router)

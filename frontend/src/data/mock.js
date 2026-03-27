@@ -121,7 +121,7 @@ export const statsData = [
 export const contactInfo = {
   whatsapp: "+5548999478281",
   whatsappDisplay: "+55 (48) 99947-8281",
-  email: "contato@visioart.com.br",
+  email: "visioartprod@gmail.com",
   instagram: "@visioart",
   location: "Florianópolis, SC"
 };
