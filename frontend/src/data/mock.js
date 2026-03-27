@@ -61,7 +61,7 @@ export const mockPortfolio = [
   {
     id: 1,
     tag: "Casamento",
-    title: "Ana & Carlos",
+    title: "...",
     image:
       "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200",
     featured: true,
@@ -69,26 +69,26 @@ export const mockPortfolio = [
   {
     id: 2,
     tag: "Institucional",
-    title: "Tech Corp",
+    title: "...",
     image: "https://images.unsplash.com/photo-1597465103212-7cd0b847a246?w=800",
   },
   {
     id: 3,
     tag: "Evento",
-    title: "Summit 2025",
+    title: "...",
     image:
       "https://images.pexels.com/photos/6621438/pexels-photo-6621438.jpeg?w=800",
   },
   {
     id: 4,
     tag: "Comercial",
-    title: "Marca Premium",
+    title: "...",
     image: "https://images.unsplash.com/photo-1570834322056-ba3e2994ab85?w=800",
   },
   {
     id: 5,
     tag: "Construção",
-    title: "Residencial Alto Padrão",
+    title: "...",
     image: "https://images.unsplash.com/photo-1612544409025-e1f6a56c1152?w=800",
   },
 ];
