@@ -38,7 +38,7 @@ const AboutSection = () => {
           <div className="about-text">
             <p>
               Na <strong>VISIOART</strong>, cada frame conta uma história. Somos
-              uma produtora audiovisual que une <em>arte, técnica e emoção</em>
+              uma produtora audiovisual que une <em>arte, técnica e emoção </em>
               para criar filmes que transcendem o comum.
             </p>
             <p>
