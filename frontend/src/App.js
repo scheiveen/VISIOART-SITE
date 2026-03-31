@@ -27,6 +27,7 @@ function App() {
         <ContactSection />
       </main>
       <Footer />
+      <Analytics />
     </div>
   );
 }
