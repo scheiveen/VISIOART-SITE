@@ -35,7 +35,9 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.6s ease, filter 0.6s ease;
+  transition:
+    transform 0.6s ease,
+    filter 0.6s ease;
   filter: grayscale(100%) contrast(1.1);
 }
 
@@ -66,7 +68,7 @@
 
 .portfolio-tag {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--accent);
@@ -76,7 +78,7 @@
 .portfolio-title {
   font-family: var(--serif);
   font-style: italic;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1rem, 3vw, 2rem);
   font-weight: 300;
   color: var(--white);
 }

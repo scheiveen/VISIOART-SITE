@@ -88,7 +88,7 @@ export const mockPortfolio = [
   {
     id: 5,
     tag: "Aniversário",
-    title: "...",
+    title: "ANIVERSÁRIO DE 15 ANOS DA ISABELA",
     image: "/img/aniverisa.jpeg",
   },
 ];

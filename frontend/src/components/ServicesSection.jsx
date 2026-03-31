@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { mockServices } from '../data/mock';
-import './ServicesSection.css';
+import React, { useEffect, useRef } from "react";
+import { mockServices } from "../data/mock";
+import "./ServicesSection.css";
 
 const ServicesSection = () => {
   const sectionRef = useRef(null);
@@ -10,15 +10,15 @@ const ServicesSection = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.reveal').forEach((el, index) => {
+            entry.target.querySelectorAll(".reveal").forEach((el, index) => {
               setTimeout(() => {
-                el.classList.add('revealed');
+                el.classList.add("revealed");
               }, index * 100);
             });
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {

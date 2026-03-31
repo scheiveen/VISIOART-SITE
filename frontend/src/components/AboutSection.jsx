@@ -43,7 +43,7 @@ const AboutSection = () => {
             </p>
             <p>
               Especializamo-nos em capturar momentos únicos e transformá-los em{" "}
-              <strong>narrativas cinematográficas</strong>
+              <strong>narrativas cinematográficas </strong>
               que permanecem na memória.
             </p>
           </div>

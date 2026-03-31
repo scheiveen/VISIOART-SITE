@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { mockPortfolio } from '../data/mock';
-import './PortfolioSection.css';
+import React, { useEffect, useRef, useState } from "react";
+import { mockPortfolio } from "../data/mock";
+import "./PortfolioSection.css";
 
 const PortfolioSection = () => {
   const sectionRef = useRef(null);
@@ -11,15 +11,15 @@ const PortfolioSection = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.reveal').forEach((el, index) => {
+            entry.target.querySelectorAll(".reveal").forEach((el, index) => {
               setTimeout(() => {
-                el.classList.add('revealed');
+                el.classList.add("revealed");
               }, index * 100);
             });
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -32,7 +32,7 @@ const PortfolioSection = () => {
   return (
     <section id="portfolio" className="portfolio-section" ref={sectionRef}>
       <div className="portfolio-header">
-        <span className="section-label">Nosso Trabalho</span>
+        <span className="section-label">Nossos Trabalhos Mais Recentes</span>
         <h2 className="section-title">Portfolio</h2>
       </div>
 
@@ -40,7 +40,7 @@ const PortfolioSection = () => {
         {mockPortfolio.map((item, index) => (
           <div
             key={item.id}
-            className={`portfolio-item reveal ${item.featured ? 'featured' : ''}`}
+            className={`portfolio-item reveal ${item.featured ? "featured" : ""}`}
             onClick={() => setSelectedItem(item)}
           >
             <img src={item.image} alt={item.title} className="portfolio-img" />

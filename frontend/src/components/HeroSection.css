@@ -15,24 +15,32 @@
 }
 
 .hero-bg::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(200, 184, 154, 0.15) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(200, 184, 154, 0.15) 0%,
+    transparent 70%
+  );
   top: 10%;
   right: 10%;
   filter: blur(80px);
 }
 
 .hero-bg::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 400px;
   height: 400px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(200, 184, 154, 0.1) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(200, 184, 154, 0.1) 0%,
+    transparent 70%
+  );
   bottom: 20%;
   left: 15%;
   filter: blur(60px);
@@ -47,11 +55,16 @@
 }
 
 .hero-lines::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 1px;
-  height: 200px;
-  background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+  height: 150px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--accent),
+    transparent
+  );
   left: 50%;
   top: 0;
   transform-origin: top;
@@ -74,10 +87,11 @@
 .hero-eyebrow {
   display: block;
   color: var(--accent);
-  font-size: 0.75rem;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
   font-family: var(--body);
   position: relative;
   z-index: 1;
@@ -145,7 +159,12 @@
 .scroll-line {
   width: 1px;
   height: 60px;
-  background: linear-gradient(to bottom, transparent, var(--white), transparent);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--white),
+    transparent
+  );
   animation: scrollPulse 2s ease-in-out infinite;
 }
 
@@ -160,5 +179,15 @@
 
   .hero-scroll {
     left: 2rem;
+  }
+
+  .hero-lines::before {
+    max-height: 130px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.875rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
   }
 }

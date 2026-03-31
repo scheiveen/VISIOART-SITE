@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import './HeroSection.css';
+import React, { useEffect } from "react";
+import "./HeroSection.css";
 
 const HeroSection = () => {
   useEffect(() => {
-    const heroElements = document.querySelectorAll('.hero-content > *');
+    const heroElements = document.querySelectorAll(".hero-content > *");
     heroElements.forEach((el, index) => {
       setTimeout(() => {
-        el.style.animation = 'fadeUp 1s ease-out forwards';
+        el.style.animation = "fadeUp 1s ease-out forwards";
       }, index * 100);
     });
   }, []);
@@ -24,10 +24,13 @@ const HeroSection = () => {
           DA VISÃO AO <em>Cinema</em>
         </h1>
         <p className="hero-subtitle">
-          Transformamos momentos em narrativas cinematográficas<br />
+          Transformamos momentos em narrativas cinematográficas
+          <br />
           que emocionam, inspiram e permanecem
         </p>
-        <a href="#contato" className="hero-cta">Iniciar Projeto</a>
+        <a href="#contato" className="hero-cta">
+          Iniciar Projeto
+        </a>
       </div>
 
       <div className="hero-scroll">
