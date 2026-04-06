@@ -43,7 +43,15 @@ const PortfolioSection = () => {
             className={`portfolio-item reveal ${item.featured ? 'featured' : ''}`}
             onClick={() => setSelectedItem(item)}
           >
-            <img src={item.image} alt={item.title} className="portfolio-img" />
+            <video 
+              className="portfolio-video"
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+            >
+              <source src={item.video} type="video/mp4" />
+            </video>
             <div className="portfolio-overlay">
               <div className="portfolio-info">
                 <span className="portfolio-tag">{item.tag}</span>

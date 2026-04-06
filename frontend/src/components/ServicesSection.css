@@ -35,13 +35,13 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
-.service-image {
+.service-video-wrapper {
   position: relative;
   height: 250px;
   overflow: hidden;
 }
 
-.service-image img {
+.service-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -50,7 +50,7 @@
   filter: grayscale(100%) contrast(1.1);
 }
 
-.service-card:hover .service-image img {
+.service-card:hover .service-video {
   transform: scale(1.05);
   filter: grayscale(0%) contrast(1);
 }

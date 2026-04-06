@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { heroVideo } from '../data/mock';
 import './HeroSection.css';
 
 const HeroSection = () => {
@@ -14,6 +15,17 @@ const HeroSection = () => {
   return (
     <section id="hero" className="hero">
       <div className="hero-bg">
+        <video 
+          className="hero-video"
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          poster=""
+        >
+          <source src={heroVideo.desktop} type="video/mp4" />
+        </video>
+        <div className="hero-overlay"></div>
         <div className="hero-grain"></div>
         <div className="hero-lines"></div>
       </div>

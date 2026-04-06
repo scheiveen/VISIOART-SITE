@@ -28,6 +28,19 @@ const AboutSection = () => {
 
   return (
     <section id="sobre" className="about-section" ref={sectionRef}>
+      <div className="about-bg-video">
+        <video 
+          className="about-video"
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+        >
+          <source src="https://videos.pexels.com/video-files/4625771/4625771-hd_1920_1080_30fps.mp4" type="video/mp4" />
+        </video>
+        <div className="about-video-overlay"></div>
+      </div>
+      
       <div className="about-grid">
         <div className="about-left reveal">
           <span className="section-label">Quem Somos</span>

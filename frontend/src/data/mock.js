@@ -1,59 +1,47 @@
-// Mock data based on the original HTML design
+// Mock data with VIDEO URLs for VISIOART
 
 export const mockServices = [
   {
     id: 1,
     num: "01",
-    icon: "💍",
     name: "Vídeos de Casamento",
     desc: "Registro cinematográfico do dia mais importante com storytelling emocional",
-    image:
-      "https://images.unsplash.com/photo-1770217614322-0e3bd39ed212?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
+    video: "https://videos.pexels.com/video-files/3402310/3402310-uhd_2560_1440_25fps.mp4"
   },
   {
     id: 2,
     num: "02",
-    icon: "🎉",
     name: "Eventos Corporativos",
     desc: "Cobertura profissional de convenções, lançamentos e festas empresariais",
-    image:
-      "https://images.unsplash.com/photo-1523580494863-6f3031224c94?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
+    video: "https://videos.pexels.com/video-files/6774277/6774277-uhd_2560_1440_25fps.mp4"
   },
   {
     id: 3,
     num: "03",
-    icon: "🎬",
     name: "Filmes Institucionais",
     desc: "Produções que fortalecem identidade corporativa e posicionamento de marca",
-    image:
-      "https://images.pexels.com/photos/4064838/pexels-photo-4064838.jpeg?auto=compress&cs=tinysrgb&w=800",
+    video: "https://videos.pexels.com/video-files/3196643/3196643-uhd_2560_1440_30fps.mp4"
   },
   {
     id: 4,
     num: "04",
-    icon: "📱",
     name: "Conteúdo Digital",
     desc: "Vídeos otimizados para redes sociais com impacto visual e engajamento",
-    image:
-      "https://images.unsplash.com/photo-1758273239210-59fea02475eb?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
+    video: "https://videos.pexels.com/video-files/4625828/4625828-uhd_2560_1440_24fps.mp4"
   },
   {
     id: 5,
     num: "05",
-    icon: "🎭",
     name: "Publicidade",
     desc: "Campanhas comerciais com conceito criativo e execução premium",
-    image:
-      "https://images.pexels.com/photos/5878870/pexels-photo-5878870.jpeg?auto=compress&cs=tinysrgb&w=800",
+    video: "https://videos.pexels.com/video-files/8250138/8250138-uhd_2560_1440_30fps.mp4"
   },
   {
     id: 6,
     num: "06",
-    icon: "🏗️",
     name: "Construção Civil",
     desc: "Filmes técnicos e promocionais para empreendimentos e obras",
-    image:
-      "https://images.unsplash.com/photo-1772551419713-302fc638b035?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
+    video: "https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4"
   },
 ];
 
@@ -62,82 +50,87 @@ export const mockPortfolio = [
     id: 1,
     tag: "Casamento",
     title: "Ana & Carlos",
-    image:
-      "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200",
-    featured: true,
+    video: "https://videos.pexels.com/video-files/9037751/9037751-hd_1920_1080_30fps.mp4",
+    featured: true
   },
   {
     id: 2,
     tag: "Institucional",
     title: "Tech Corp",
-    image: "https://images.unsplash.com/photo-1597465103212-7cd0b847a246?w=800",
+    video: "https://videos.pexels.com/video-files/4624925/4624925-hd_1920_1080_30fps.mp4"
   },
   {
     id: 3,
     tag: "Evento",
     title: "Summit 2025",
-    image:
-      "https://images.pexels.com/photos/6621438/pexels-photo-6621438.jpeg?w=800",
+    video: "https://videos.pexels.com/video-files/6774353/6774353-hd_1920_1080_30fps.mp4"
   },
   {
     id: 4,
     tag: "Comercial",
     title: "Marca Premium",
-    image: "https://images.unsplash.com/photo-1570834322056-ba3e2994ab85?w=800",
+    video: "https://videos.pexels.com/video-files/5495757/5495757-hd_1920_1080_30fps.mp4"
   },
   {
     id: 5,
     tag: "Construção",
     title: "Residencial Alto Padrão",
-    image: "https://images.unsplash.com/photo-1612544409025-e1f6a56c1152?w=800",
-  },
+    video: "https://videos.pexels.com/video-files/3129804/3129804-hd_1920_1080_25fps.mp4"
+  }
 ];
+
+export const heroVideo = {
+  desktop: "https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4",
+  mobile: "https://videos.pexels.com/video-files/3209828/3209828-hd_1280_720_25fps.mp4"
+};
+
+export const aboutVideo = "https://videos.pexels.com/video-files/4625771/4625771-hd_1920_1080_30fps.mp4";
 
 export const mockProcess = [
   {
     id: 1,
     num: "01",
     name: "Briefing e Conceito",
-    desc: "Entendemos seu projeto, público-alvo e objetivos para criar uma narrativa única",
+    desc: "Entendemos seu projeto, público-alvo e objetivos para criar uma narrativa única"
   },
   {
     id: 2,
     num: "02",
     name: "Planejamento",
-    desc: "Desenvolvemos roteiro, storyboard e logística completa da produção",
+    desc: "Desenvolvemos roteiro, storyboard e logística completa da produção"
   },
   {
     id: 3,
     num: "03",
     name: "Produção",
-    desc: "Captação com equipamento profissional e equipe técnica especializada",
+    desc: "Captação com equipamento profissional e equipe técnica especializada"
   },
   {
     id: 4,
     num: "04",
     name: "Pós-produção",
-    desc: "Edição cinematográfica, color grading e finalização de alto padrão",
+    desc: "Edição cinematográfica, color grading e finalização de alto padrão"
   },
   {
     id: 5,
     num: "05",
     name: "Entrega",
-    desc: "Filmes finalizados nos formatos adequados com suporte pós-entrega",
-  },
+    desc: "Filmes finalizados nos formatos adequados com suporte pós-entrega"
+  }
 ];
 
 export const statsData = [
-  { number: "+50", label: "PROJETOS REALIZADOS" },
-  { number: "3", label: "ANOS DE EXPERIÊNCIA" },
-  { number: "100%", label: "CLIENTES SATISFEITOS" },
+  { number: "150+", label: "PROJETOS REALIZADOS" },
+  { number: "8", label: "ANOS DE EXPERIÊNCIA" },
+  { number: "100%", label: "CLIENTES SATISFEITOS" }
 ];
 
 export const contactInfo = {
   whatsapp: "+5548999478281",
   whatsappDisplay: "+55 (48) 99947-8281",
   email: "visioartprod@gmail.com",
-  instagram: "@visioart.prod",
-  location: "Alfredo Wagner, SC",
+  instagram: "@visioart",
+  location: "Alfredo Wagner, SC"
 };
 
 export const marqueeText = [
@@ -145,5 +138,5 @@ export const marqueeText = [
   "CINEMA",
   "EMOÇÃO",
   "CRIATIVIDADE",
-  "PRODUÇÃO",
+  "PRODUÇÃO"
 ];
