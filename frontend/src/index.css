@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap");
 
 * {
   margin: 0;
@@ -12,9 +12,9 @@
   --gray-dark: #1a1a1a;
   --gray-light: #888;
   --accent: #c8b89a;
-  --serif: 'Cormorant Garamond', Georgia, serif;
-  --display: 'Bebas Neue', sans-serif;
-  --body: 'DM Sans', sans-serif;
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --display: "Bebas Neue", sans-serif;
+  --body: "DM Sans", sans-serif;
 }
 
 body {
@@ -88,7 +88,10 @@ a {
   height: 40px;
   border: 1px solid var(--white);
   transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+  transition:
+    width 0.3s ease,
+    height 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .cursor-ring.active {
@@ -119,7 +122,8 @@ a {
 }
 
 @keyframes scrollPulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
   }
   50% {
@@ -144,7 +148,9 @@ a {
 .reveal {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .reveal.revealed {
@@ -178,7 +184,12 @@ a {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: normal;
   line-height: 1.2;
 }
