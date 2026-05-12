@@ -33,13 +33,12 @@ const HeroSection = () => {
       <div className="hero-content">
         <span className="hero-eyebrow">PRODUÇÃO AUDIOVISUAL</span>
         <h1 className="hero-title">
-          DA VISÃO AO <em>Cinema</em>
+          Transformamos histórias reais em <em>filmes que permanecem por gerações</em>
         </h1>
         <p className="hero-subtitle">
-          Transformamos momentos em narrativas cinematográficas<br />
-          que emocionam, inspiram e permanecem
+          Porque algumas histórias merecem ser lembradas para sempre
         </p>
-        <a href="#contato" className="hero-cta">Iniciar Projeto</a>
+        <a href="#contato" className="hero-cta">Eternizar Minha História</a>
       </div>
 
       <div className="hero-scroll">

@@ -4,44 +4,50 @@ export const mockServices = [
   {
     id: 1,
     num: "01",
-    name: "Vídeos de Casamento",
-    desc: "Registro cinematográfico do dia mais importante com storytelling emocional",
-    video: "https://videos.pexels.com/video-files/3402310/3402310-uhd_2560_1440_25fps.mp4"
+    name: "Histórias de Amor Transformadas em Cinema",
+    desc: "Eternizamos o dia mais importante da sua vida em um filme que você vai assistir com seus filhos e netos",
+    video: "https://videos.pexels.com/video-files/3402310/3402310-uhd_2560_1440_25fps.mp4",
+    emotion: "Memória Emocional"
   },
   {
     id: 2,
     num: "02",
-    name: "Eventos Corporativos",
-    desc: "Cobertura profissional de convenções, lançamentos e festas empresariais",
-    video: "https://videos.pexels.com/video-files/6774277/6774277-uhd_2560_1440_25fps.mp4"
+    name: "Narrativas Visuais para Marcas que Desejam Autoridade",
+    desc: "Posicione sua marca como líder através de filmes que transmitem confiança, credibilidade e presença",
+    video: "https://videos.pexels.com/video-files/6774277/6774277-uhd_2560_1440_25fps.mp4",
+    emotion: "Autoridade e Percepção"
   },
   {
     id: 3,
     num: "03",
-    name: "Filmes Institucionais",
-    desc: "Produções que fortalecem identidade corporativa e posicionamento de marca",
-    video: "https://videos.pexels.com/video-files/3196643/3196643-uhd_2560_1440_30fps.mp4"
+    name: "Filmes que Fortalecem Identidade e Propósito",
+    desc: "Mostre ao mundo não apenas o que você faz, mas por que você existe e o impacto que você gera",
+    video: "https://videos.pexels.com/video-files/3196643/3196643-uhd_2560_1440_30fps.mp4",
+    emotion: "Legado Corporativo"
   },
   {
     id: 4,
     num: "04",
-    name: "Conteúdo Digital",
-    desc: "Vídeos otimizados para redes sociais com impacto visual e engajamento",
-    video: "https://videos.pexels.com/video-files/4625828/4625828-uhd_2560_1440_24fps.mp4"
+    name: "Presença Visual para Marcas que Desejam Ser Lembradas",
+    desc: "Destaque-se nas redes sociais com conteúdo que gera conexão emocional e engajamento verdadeiro",
+    video: "https://videos.pexels.com/video-files/4625828/4625828-uhd_2560_1440_24fps.mp4",
+    emotion: "Conexão Digital"
   },
   {
     id: 5,
     num: "05",
-    name: "Publicidade",
-    desc: "Campanhas comerciais com conceito criativo e execução premium",
-    video: "https://videos.pexels.com/video-files/8250138/8250138-uhd_2560_1440_30fps.mp4"
+    name: "Campanhas que Transformam Percepção em Desejo",
+    desc: "Crie uma conexão emocional tão forte que seu público não apenas veja, mas sinta e queira fazer parte",
+    video: "https://videos.pexels.com/video-files/8250138/8250138-uhd_2560_1440_30fps.mp4",
+    emotion: "Impacto Comercial"
   },
   {
     id: 6,
     num: "06",
-    name: "Construção Civil",
-    desc: "Filmes técnicos e promocionais para empreendimentos e obras",
-    video: "https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4"
+    name: "Projetos que Vendem Sonhos, Não Apenas Imóveis",
+    desc: "Transforme empreendimentos em histórias de realização, mostrando não só o espaço, mas a vida que acontecerá ali",
+    video: "https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4",
+    emotion: "Aspiração e Conquista"
   },
 ];
 
