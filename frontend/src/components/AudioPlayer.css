@@ -11,8 +11,8 @@
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.8);
   border: 1px solid rgba(218, 165, 32, 0.3);
-  color: #DAA520;
-  display: flex;
+  color: #daa520;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -23,7 +23,7 @@
 
 .audio-control:hover {
   background: rgba(218, 165, 32, 0.1);
-  border-color: #DAA520;
+  border-color: #daa520;
   transform: scale(1.05);
   box-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
 }
@@ -44,7 +44,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
@@ -58,12 +59,12 @@
     bottom: 1.5rem;
     right: 1.5rem;
   }
-  
+
   .audio-control {
     width: 48px;
     height: 48px;
   }
-  
+
   .audio-control svg {
     width: 20px;
     height: 20px;
