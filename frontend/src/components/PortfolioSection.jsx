@@ -32,8 +32,8 @@ const PortfolioSection = () => {
   return (
     <section id="portfolio" className="portfolio-section" ref={sectionRef}>
       <div className="portfolio-header">
-        <span className="section-label">Nosso Trabalho</span>
-        <h2 className="section-title">Portfolio</h2>
+        <span className="section-label">Cada projeto é uma vida transformada em cinema</span>
+        <h2 className="section-title">Histórias Que Já Eternizamos</h2>
       </div>
 
       <div className="portfolio-grid">

@@ -146,3 +146,5 @@ export const marqueeText = [
   "CRIATIVIDADE",
   "PRODUÇÃO"
 ];
+
+export const ambientMusic = "https://cdn.pixabay.com/audio/2022/05/13/audio_1808fbf07a.mp3";

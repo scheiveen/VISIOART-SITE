@@ -31,8 +31,8 @@ const ServicesSection = () => {
   return (
     <section id="servicos" className="services-section" ref={sectionRef}>
       <div className="services-header">
-        <h2 className="section-title">Serviços</h2>
-        <span className="section-label">O que fazemos</span>
+        <h2 className="section-title">Como Transformamos Memórias</h2>
+        <span className="section-label">Não são serviços. São legados eternizados em cinema.</span>
       </div>
 
       <div className="services-grid">
