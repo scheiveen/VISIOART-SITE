@@ -38,16 +38,13 @@ const ServicesSection = () => {
       <div className="services-grid">
         {mockServices.map((service, index) => (
           <div key={service.id} className="service-card reveal">
-            <div className="service-video-wrapper">
-              <video 
-                className="service-video"
-                autoPlay 
-                loop 
-                muted 
-                playsInline
-              >
-                <source src={service.video} type="video/mp4" />
-              </video>
+            <div className="service-image-wrapper">
+              <img 
+                className="service-image"
+                src={service.image}
+                alt={service.name}
+                loading="lazy"
+              />
               <div className="service-overlay">
                 <div className="service-num">{service.num}</div>
               </div>

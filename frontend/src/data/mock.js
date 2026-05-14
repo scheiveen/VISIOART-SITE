@@ -6,7 +6,7 @@ export const mockServices = [
     num: "01",
     name: "Histórias de Amor Transformadas em Cinema",
     desc: "Eternizamos o dia mais importante da sua vida em um filme que você vai assistir com seus filhos e netos",
-    video: "https://videos.pexels.com/video-files/3402310/3402310-uhd_2560_1440_25fps.mp4",
+    image: "https://images.unsplash.com/photo-1680624528924-7ee5542e4f4d?w=800&q=80",
     emotion: "Memória Emocional"
   },
   {
@@ -14,7 +14,7 @@ export const mockServices = [
     num: "02",
     name: "Narrativas Visuais para Marcas que Desejam Autoridade",
     desc: "Posicione sua marca como líder através de filmes que transmitem confiança, credibilidade e presença",
-    video: "https://videos.pexels.com/video-files/6774277/6774277-uhd_2560_1440_25fps.mp4",
+    image: "https://images.unsplash.com/photo-1508385082359-f38ae991e8f2?w=800&q=80",
     emotion: "Autoridade e Percepção"
   },
   {
@@ -22,7 +22,7 @@ export const mockServices = [
     num: "03",
     name: "Filmes que Fortalecem Identidade e Propósito",
     desc: "Mostre ao mundo não apenas o que você faz, mas por que você existe e o impacto que você gera",
-    video: "https://videos.pexels.com/video-files/3196643/3196643-uhd_2560_1440_30fps.mp4",
+    image: "https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20%281%20of%201%29-5.jpg?w=800&q=80",
     emotion: "Legado Corporativo"
   },
   {
@@ -30,7 +30,7 @@ export const mockServices = [
     num: "04",
     name: "Presença Visual para Marcas que Desejam Ser Lembradas",
     desc: "Destaque-se nas redes sociais com conteúdo que gera conexão emocional e engajamento verdadeiro",
-    video: "https://videos.pexels.com/video-files/4625828/4625828-uhd_2560_1440_24fps.mp4",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80",
     emotion: "Conexão Digital"
   },
   {
@@ -38,7 +38,7 @@ export const mockServices = [
     num: "05",
     name: "Campanhas que Transformam Percepção em Desejo",
     desc: "Crie uma conexão emocional tão forte que seu público não apenas veja, mas sinta e queira fazer parte",
-    video: "https://videos.pexels.com/video-files/8250138/8250138-uhd_2560_1440_30fps.mp4",
+    image: "https://images.unsplash.com/photo-1630948688037-aa88dc433a57?w=800&q=80",
     emotion: "Impacto Comercial"
   },
   {
@@ -46,7 +46,7 @@ export const mockServices = [
     num: "06",
     name: "Projetos que Vendem Sonhos, Não Apenas Imóveis",
     desc: "Transforme empreendimentos em histórias de realização, mostrando não só o espaço, mas a vida que acontecerá ali",
-    video: "https://videos.pexels.com/video-files/3129957/3129957-uhd_2560_1440_25fps.mp4",
+    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
     emotion: "Aspiração e Conquista"
   },
 ];
@@ -63,19 +63,19 @@ export const mockPortfolio = [
     id: 2,
     tag: "Institucional",
     title: "Tech Corp",
-    video: "https://videos.pexels.com/video-files/4624925/4624925-hd_1920_1080_30fps.mp4"
+    video: "https://videos.pexels.com/video-files/3130284/3130284-hd_1920_1080_30fps.mp4"
   },
   {
     id: 3,
     tag: "Evento",
     title: "Summit 2025",
-    video: "https://videos.pexels.com/video-files/6774353/6774353-hd_1920_1080_30fps.mp4"
+    video: "https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4"
   },
   {
     id: 4,
     tag: "Comercial",
     title: "Marca Premium",
-    video: "https://videos.pexels.com/video-files/5495757/5495757-hd_1920_1080_30fps.mp4"
+    video: "https://videos.pexels.com/video-files/3196643/3196643-hd_1920_1080_30fps.mp4"
   },
   {
     id: 5,
