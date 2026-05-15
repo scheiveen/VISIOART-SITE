@@ -62,33 +62,47 @@ export const mockPortfolio = [
     id: 1,
     tag: "Pedido de Casamento",
     title: "João & Julia",
-    video: "/videos/PEDIDO JOÃO 4K HORIZONTAL.mp4",
+    video:
+      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846014/PEDIDO_JOA%CC%83O_HORIZONTAL_SITE_ihq4yw.mov",
+    thumbnail:
+      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/PEDIDO_JOA%CC%83O_HORIZONTAL_SITE_ihq4yw.jpg",
     featured: true,
   },
   {
     id: 2,
     tag: "Institucional",
     title: "Secretaria de Saude de Alfredo Wagner",
-    video: "/videos/SAUDE SITE.mp4",
+    video:
+      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846438/SAUDE_SITE_jxin5y.mov",
+    thumbnail:
+      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/SAUDE_SITE_jxin5y.jpg",
   },
   {
     id: 3,
     tag: "Aniversário de 15 anos",
     title: "Isabela",
-    video: "/videos/ENSAIO ISA.mp4",
+    video:
+      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846015/ENSAIO_ISA_SITE_lbtnq2.mov",
+    thumbnail:
+      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/ENSAIO_ISA_SITE_lbtnq2.jpg",
   },
   {
     id: 4,
-    tag: "...",
-    title: "...",
+    tag: "Comercial",
+    title: "Recanto das Américas Wellness Resort & Spa",
     video:
-      "https://videos.pexels.com/video-files/3196643/3196643-hd_1920_1080_30fps.mp4",
+      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846008/RESORT_SITE_2_vsvniy.mov",
+    thumbnail:
+      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/RESORT_SITE_2_vsvniy.jpg",
   },
   {
     id: 5,
     tag: "Construção",
     title: "Recanto das Américas Wellness Resort & Spa",
-    video: "/videos/RESORT SITE.mp4",
+    video:
+      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846002/RESORT_SITE_1_sohhwy.mov",
+    thumbnail:
+      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/RESORT_SITE_1_sohhwy.jpg",
   },
 ];
 
