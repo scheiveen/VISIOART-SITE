@@ -88,12 +88,12 @@ export const mockPortfolio = [
   },
   {
     id: 4,
-    tag: "Comercial",
-    title: "Recanto das Américas Wellness Resort & Spa",
+    tag: "Cerimônia de Casamento",
+    title: "Marina & Andrigo",
     video:
-      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846008/RESORT_SITE_2_vsvniy.mov",
+      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1780511947/MARINA_SITE_f3txsw.mov",
     thumbnail:
-      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/RESORT_SITE_2_vsvniy.jpg",
+      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/MARINA_SITE_f3txsw.jpg",
   },
   {
     id: 5,
