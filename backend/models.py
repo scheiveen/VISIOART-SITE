@@ -2,7 +2,7 @@ import uuid
 from datetime import datetime, timezone
 from typing import Literal, Optional
 
-from pydantic import BaseModel, ConfigDict, EmailStr
+from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
 
 def new_id() -> str:
@@ -47,7 +47,7 @@ class ClientCreate(BaseModel):
     name: str
     email: EmailStr
     phone: Optional[str] = None
-    password: str
+    password: str = Field(min_length=8)
     active: bool = True
 
 
@@ -55,7 +55,7 @@ class ClientUpdate(BaseModel):
     name: Optional[str] = None
     phone: Optional[str] = None
     active: Optional[bool] = None
-    password: Optional[str] = None
+    password: Optional[str] = Field(default=None, min_length=8)
 
 
 class UserPublic(BaseModel):

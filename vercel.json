@@ -11,6 +11,15 @@
   ],
   "routes": [
     {
+      "src": "/(.*)",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin"
+      },
+      "continue": true
+    },
+    {
       "src": "/(.*\\.(js|css|json|ico|png|jpg|jpeg|gif|svg|webp|avif|mp4|webm|ogg|mp3|wav|woff|woff2|ttf|eot|map|txt|xml|pdf))",
       "dest": "/frontend/$1"
     },
