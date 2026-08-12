@@ -5,12 +5,14 @@
   cursor: none;
 }
 
-main {
+.App main {
   position: relative;
 }
 
-/* Override default cursor for the entire app */
-* {
+/* Override default cursor só dentro da home (.App): o cursor customizado
+   (CustomCursor) só é montado ali. Um seletor `*` global escondia o cursor
+   nativo também em /admin e /cliente, que não têm cursor customizado. */
+.App * {
   cursor: none !important;
 }
 
@@ -28,7 +30,7 @@ button:hover,
     cursor: auto;
   }
 
-  * {
+  .App * {
     cursor: auto !important;
   }
 

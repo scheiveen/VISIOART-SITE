@@ -1,12 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: ["class"],
+    // Preflight desativado: o site público já tem seu próprio reset/tipografia
+    // em index.css. Só queremos as classes utilitárias do Tailwind (usadas pelo
+    // Portal do Cliente/Admin), sem que o reset global do Tailwind reescreva
+    // estilos de elementos (h1, button, img, etc.) do site existente.
+    corePlugins: {
+      preflight: false,
+    },
     content: [
     "./src/**/*.{js,jsx,ts,tsx}",
     "./public/index.html"
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+  			display: ['var(--display)'],
+  			serif: ['var(--serif)'],
+  			body: ['var(--body)']
+  		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
@@ -36,7 +48,7 @@ module.exports = {
   				foreground: 'hsl(var(--muted-foreground))'
   			},
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
+  				DEFAULT: 'hsl(var(--accent-hsl))',
   				foreground: 'hsl(var(--accent-foreground))'
   			},
   			destructive: {

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
@@ -13,7 +14,10 @@ import Footer from './components/Footer';
 import AudioPlayer from './components/AudioPlayer';
 import './App.css';
 
-function App() {
+const ClientApp = lazy(() => import('./portal/ClientApp'));
+const AdminApp = lazy(() => import('./admin/AdminApp'));
+
+function HomePage() {
   return (
     <div className="App">
       <CustomCursor />
@@ -31,6 +35,30 @@ function App() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route
+        path="/cliente/*"
+        element={
+          <Suspense fallback={null}>
+            <ClientApp />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/admin/*"
+        element={
+          <Suspense fallback={null}>
+            <AdminApp />
+          </Suspense>
+        }
+      />
+    </Routes>
   );
 }
 

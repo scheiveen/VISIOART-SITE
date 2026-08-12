@@ -1,12 +1,45 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap");
 
+/* Preflight desativado (ver tailwind.config.js) — só components/utilities,
+   que só entram em ação nas classes usadas pelo Portal do Cliente/Admin. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Sem Preflight, botões nativos (usados pelos componentes shadcn do
+   Portal do Cliente/Admin) mostram o fundo/borda padrão do navegador.
+   Nenhum botão do site público usa o seletor de tag `button` (todos têm
+   classe própria com background explícito), então este reset pontual
+   não afeta o site existente. */
+button {
+  background-color: transparent;
+  background-image: none;
+}
+
+/* Autofill do navegador (comum em e-mail/senha do Portal do Cliente/Admin):
+   sem isso, o Chrome pinta fundo e texto do próprio autofill por cima do
+   nosso CSS — como o site é escuro, o resultado fica ilegível ("preto no
+   preto"). Força os campos preenchidos automaticamente a usarem as cores
+   do site. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--white);
+  -webkit-box-shadow: 0 0 0px 1000px var(--gray-dark) inset;
+  box-shadow: 0 0 0px 1000px var(--gray-dark) inset;
+  caret-color: var(--white);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
 :root {
+  color-scheme: dark;
   --black: #080808;
   --white: #f5f2ee;
   --gray-dark: #1a1a1a;
@@ -15,6 +48,30 @@
   --serif: "Cormorant Garamond", Georgia, serif;
   --display: "Bebas Neue", sans-serif;
   --body: "DM Sans", sans-serif;
+
+  /* Tokens shadcn/ui — mapeados para a paleta VISIOART acima.
+     Usados apenas pelo Portal do Cliente e Painel Admin (novas áreas);
+     o site público não referencia essas variáveis. */
+  --background: 0 0% 3%;
+  --foreground: 40 20% 95%;
+  --card: 0 0% 6%;
+  --card-foreground: 40 20% 95%;
+  --popover: 0 0% 6%;
+  --popover-foreground: 40 20% 95%;
+  --primary: 35 30% 71%;
+  --primary-foreground: 0 0% 3%;
+  --secondary: 0 0% 10%;
+  --secondary-foreground: 40 20% 95%;
+  --muted: 0 0% 12%;
+  --muted-foreground: 0 0% 62%;
+  --accent-hsl: 35 30% 71%;
+  --accent-foreground: 0 0% 3%;
+  --destructive: 0 62% 50%;
+  --destructive-foreground: 40 20% 95%;
+  --border: 0 0% 18%;
+  --input: 0 0% 18%;
+  --ring: 35 30% 71%;
+  --radius: 0.6rem;
 }
 
 body {

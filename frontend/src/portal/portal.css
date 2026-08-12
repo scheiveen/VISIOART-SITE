@@ -1,0 +1,59 @@
+/* Reaproveita a linguagem visual do site público (grão de filme, eyebrows,
+   itálico serifado, entrada suave dos cards) para o Portal do Cliente não
+   parecer uma área genérica à parte do resto da VISIOART. */
+
+.portal-grain {
+  position: fixed;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Mesma textura, mas para sobrepor uma miniatura local (position: absolute
+   dentro de um cartão), em vez de cobrir a tela inteira. */
+.portal-grain-card {
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+.portal-eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+}
+
+.portal-greeting {
+  font-family: var(--serif);
+  font-style: italic;
+  color: rgba(245, 242, 238, 0.7);
+}
+
+.portal-stat-number {
+  font-family: var(--display);
+  color: var(--accent);
+  line-height: 1;
+}
+
+@keyframes portalFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portal-fade-in {
+  opacity: 0;
+  animation: portalFadeUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}

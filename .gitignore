@@ -104,7 +104,7 @@ credentials.json
 *.pem
 *.key
 .credentials
--e 
+-e
 # Environment and credential files
 .env
 .env.*
@@ -113,3 +113,7 @@ credentials.json
 *.pem
 *.key
 .credentials
+
+# ...mas os templates de exemplo (sem segredos) devem ser versionados
+!.env.example
+!**/.env.example
