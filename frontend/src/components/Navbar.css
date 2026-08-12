@@ -153,7 +153,10 @@
   }
 
   .site-navbar.scrolled {
-    justify-content: flex-start;
+    /* Mantém space-between (herdado da regra base) para o botão do
+       hambúrguer continuar na mesma posição (à direita) antes e depois
+       de rolar a página — antes do hambúrguer existir, flex-start não
+       fazia diferença aqui porque só havia a logo como filho da nav. */
     padding: 0.6rem 2rem;
   }
 
