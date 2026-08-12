@@ -21,11 +21,17 @@ database.client = AsyncMongoMockClient()
 database.db = database.client["visioart_test"]
 
 from server import app  # noqa: E402
+from rate_limit import limiter  # noqa: E402
 
 
 @pytest.fixture
 def db():
     return database.db
+
+
+@pytest.fixture(autouse=True)
+def reset_rate_limiter():
+    limiter.reset()
 
 
 @pytest.fixture(autouse=True)

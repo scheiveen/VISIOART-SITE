@@ -30,7 +30,7 @@
 - **Root Directory:** `backend`
 - **Environment:** `Python 3`
 - **Build Command:** `pip install -r requirements.txt`
-- **Start Command:** `uvicorn server:app --host 0.0.0.0 --port $PORT`
+- **Start Command:** `uvicorn server:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips="*"`
 
 **Environment Variables (clique em "Advanced"):**
 ```
@@ -39,12 +39,15 @@ DB_NAME=visioart
 CORS_ORIGINS=https://visioart-site.vercel.app
 JWT_SECRET=GERE_UM_VALOR_ALEATORIO_FORTE
 JWT_EXPIRE_HOURS=168
+RATE_LIMIT_DEFAULT=100/minute
 SENDGRID_API_KEY=SUA_CHAVE_SENDGRID
 SENDER_EMAIL=noreply@visioart.com
 ```
 
 - `CORS_ORIGINS` deve ser o domínio real do frontend (Vercel), separado por vírgula se houver mais de um (ex.: domínio próprio + preview do Vercel). Evite deixar `*` agora que o site tem login/autenticação real.
 - `JWT_SECRET` protege as sessões de login do Portal do Cliente e do Admin. Gere um valor forte com `python -c "import secrets; print(secrets.token_hex(32))"` e nunca reaproveite o valor usado em desenvolvimento local.
+- `--proxy-headers --forwarded-allow-ips="*"` no Start Command é necessário para que o backend enxergue o IP real de quem faz a requisição (o Render fica atrás de um proxy). Sem isso, o rate limiting abaixo trataria todo mundo como se fosse o mesmo IP.
+- `RATE_LIMIT_DEFAULT` (opcional, padrão `100/minute`) limita quantas requisições por minuto cada IP pode fazer à API — proteção básica contra alguém sobrecarregar o site. O login (`/api/auth/login`) tem um limite extra e mais rígido de 5 tentativas por minuto por IP, contra força bruta de senha.
 
 5. Clique em "Create Web Service"
 6. Aguarde o deploy (5-10 minutos)

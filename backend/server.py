@@ -6,8 +6,12 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List
 import uuid
 from datetime import datetime, timezone
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.middleware import SlowAPIMiddleware
 
 from database import client, db
+from rate_limit import limiter
 from routers import admin as admin_router
 from routers import auth as auth_router
 from routers import client_portal as client_portal_router
@@ -67,6 +71,13 @@ app.include_router(auth_router.router)
 app.include_router(admin_router.router)
 app.include_router(client_portal_router.router)
 
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+app.add_middleware(SlowAPIMiddleware)
+
+# CORSMiddleware precisa ser o último adicionado para envolver o
+# SlowAPIMiddleware por fora — assim respostas 429 também recebem
+# os headers de CORS corretos.
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
