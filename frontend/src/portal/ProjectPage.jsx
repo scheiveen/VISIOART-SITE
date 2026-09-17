@@ -368,18 +368,32 @@ function StatsBar({ groups }) {
 
 function HeroVideo({ material, poster }) {
   const previewUrl = getMaterialPreviewUrl(material);
+  const directVideoUrl =
+    material.preview_url && !isGoogleDriveUrl(material.preview_url)
+      ? material.preview_url
+      : null;
 
   return (
     <div className="rounded-xl overflow-hidden bg-black aspect-video lg:aspect-[21/9]">
-      <video
-        controls
-        controlsList="nodownload"
-        className="w-full h-full"
-        poster={material.thumbnail_url || poster || undefined}
-        src={previewUrl}
-      >
-        Seu navegador não suporta reprodução de vídeo.
-      </video>
+      {directVideoUrl ? (
+        <video
+          controls
+          controlsList="nodownload"
+          className="w-full h-full"
+          poster={material.thumbnail_url || poster || undefined}
+          src={directVideoUrl}
+        >
+          Seu navegador não suporta reprodução de vídeo.
+        </video>
+      ) : previewUrl ? (
+        <iframe
+          title={`Prévia de ${material.name}`}
+          src={previewUrl}
+          allow="autoplay; fullscreen"
+          referrerPolicy="no-referrer"
+          className="w-full h-full"
+        />
+      ) : null}
     </div>
   );
 }
