@@ -29,23 +29,37 @@ function groupMaterials(materials) {
 function getGoogleDrivePreviewUrl(fileUrl) {
   if (!fileUrl || !fileUrl.includes("drive.google.com")) return null;
 
-  const fileId =
-    fileUrl.match(/\/file\/d\/([^/]+)/)?.[1] ||
-    new URLSearchParams(fileUrl.split("?")[1] || "").get("id");
+  let fileId = fileUrl.match(/\/file\/d\/([^/]+)/)?.[1];
+  if (!fileId) {
+    try {
+      fileId = new URL(fileUrl).searchParams.get("id");
+    } catch {
+      return null;
+    }
+  }
 
   return fileId ? `https://drive.google.com/file/d/${fileId}/preview` : null;
 }
 
+function isGoogleDriveUrl(url) {
+  return Boolean(url?.includes("drive.google.com"));
+}
+
 function getMaterialPreviewUrl(material) {
+  const configuredPreview =
+    getGoogleDrivePreviewUrl(material.preview_url) || material.preview_url;
+
   return (
-    material.preview_url ||
+    configuredPreview ||
     material.thumbnail_url ||
     getGoogleDrivePreviewUrl(material.file_url)
   );
 }
 
 function getMaterialImageUrl(material) {
-  return material.preview_url || material.thumbnail_url || null;
+  return isGoogleDriveUrl(material.preview_url)
+    ? material.thumbnail_url || null
+    : material.preview_url || material.thumbnail_url || null;
 }
 
 function MaterialPreviewDialog({ material, onClose }) {
@@ -54,6 +68,10 @@ function MaterialPreviewDialog({ material, onClose }) {
   const group = CATEGORY_GROUP[material.category];
   const previewSrc = getMaterialPreviewUrl(material);
   const imageSrc = getMaterialImageUrl(material);
+  const directVideoUrl =
+    material.preview_url && !isGoogleDriveUrl(material.preview_url)
+      ? material.preview_url
+      : null;
 
   return (
     <Dialog
@@ -63,12 +81,12 @@ function MaterialPreviewDialog({ material, onClose }) {
       <DialogContent className="bg-card border-border max-w-4xl">
         <div className="space-y-4">
           <div className="rounded-lg overflow-hidden bg-secondary min-h-40 flex items-center justify-center">
-            {group === "videos" && material.preview_url ? (
+            {group === "videos" && directVideoUrl ? (
               <video
                 controls
                 className="w-full max-h-[70vh]"
                 poster={material.thumbnail_url || undefined}
-                src={material.preview_url}
+                src={directVideoUrl}
               >
                 Seu navegador não suporta reprodução de vídeo.
               </video>
@@ -82,6 +100,8 @@ function MaterialPreviewDialog({ material, onClose }) {
               <iframe
                 title={`Prévia de ${material.name}`}
                 src={previewSrc}
+                allow="autoplay; fullscreen"
+                referrerPolicy="no-referrer"
                 className="w-full h-[70vh]"
               />
             ) : (
@@ -123,19 +143,33 @@ function MaterialPreviewDialog({ material, onClose }) {
 }
 
 function VideoCard({ material, onOpen }) {
+  const directVideoUrl =
+    material.preview_url && !isGoogleDriveUrl(material.preview_url)
+      ? material.preview_url
+      : null;
+  const previewUrl = getMaterialPreviewUrl(material);
+
   return (
     <Card className="bg-card border-border overflow-hidden">
       <div className="aspect-video bg-black">
-        {material.preview_url ? (
+        {directVideoUrl ? (
           <video
             controls
             controlsList="nodownload"
             className="w-full h-full"
             poster={material.thumbnail_url || undefined}
-            src={material.preview_url}
+            src={directVideoUrl}
           >
             Seu navegador não suporta reprodução de vídeo.
           </video>
+        ) : previewUrl ? (
+          <iframe
+            title={`Prévia de ${material.name}`}
+            src={previewUrl}
+            allow="autoplay; fullscreen"
+            referrerPolicy="no-referrer"
+            className="w-full h-full"
+          />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-center px-4">
             <p className="text-sm text-muted-foreground">
@@ -222,6 +256,8 @@ function PhotoGrid({ materials }) {
                 <iframe
                   title={`Prévia de ${lightbox.name}`}
                   src={getMaterialPreviewUrl(lightbox)}
+                  allow="autoplay; fullscreen"
+                  referrerPolicy="no-referrer"
                   className="w-full h-[70vh]"
                 />
               )}
