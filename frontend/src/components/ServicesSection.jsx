@@ -31,15 +31,20 @@ const ServicesSection = () => {
   return (
     <section id="servicos" className="services-section" ref={sectionRef}>
       <div className="services-header">
-        <h2 className="section-title">Serviços</h2>
-        <span className="section-label">O que fazemos</span>
+        <h2 className="section-title">Como Transformamos Memórias</h2>
+        <span className="section-label">Não são serviços. São legados eternizados em cinema.</span>
       </div>
 
       <div className="services-grid">
         {mockServices.map((service, index) => (
           <div key={service.id} className="service-card reveal">
-            <div className="service-image">
-              <img src={service.image} alt={service.name} />
+            <div className="service-image-wrapper">
+              <img 
+                className="service-image"
+                src={service.image}
+                alt={service.name}
+                loading="lazy"
+              />
               <div className="service-overlay">
                 <div className="service-num">{service.num}</div>
               </div>

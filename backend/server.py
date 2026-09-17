@@ -1,24 +1,20 @@
-from fastapi import FastAPI, APIRouter, BackgroundTasks, HTTPException
-from dotenv import load_dotenv
+from fastapi import FastAPI, APIRouter, HTTPException
 from starlette.middleware.cors import CORSMiddleware
-from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
-from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict, EmailStr
-from typing import List, Optional
+from pydantic import BaseModel, Field, ConfigDict
+from typing import List
 import uuid
 from datetime import datetime, timezone
-from emails import send_contact_email, EmailDeliveryError
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.middleware import SlowAPIMiddleware
 
-
-ROOT_DIR = Path(__file__).parent
-load_dotenv(ROOT_DIR / '.env')
-
-# MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+from database import client, db
+from rate_limit import limiter
+from routers import admin as admin_router
+from routers import auth as auth_router
+from routers import client_portal as client_portal_router
 
 # Create the main app without a prefix
 app = FastAPI()
@@ -37,18 +33,6 @@ class StatusCheck(BaseModel):
 
 class StatusCheckCreate(BaseModel):
     client_name: str
-
-class ContactFormRequest(BaseModel):
-    name: str
-    email: EmailStr
-    phone: str
-    company: Optional[str] = None
-    service: str
-    message: str
-
-class ContactFormResponse(BaseModel):
-    status: str
-    message: str
 
 
 # Add your routes to the router instead of directly to app
@@ -80,47 +64,20 @@ async def get_status_checks():
     
     return status_checks
 
-@api_router.post("/contact", response_model=ContactFormResponse)
-async def submit_contact_form(request: ContactFormRequest, background_tasks: BackgroundTasks):
-    """
-    Process contact form submission and send email to visioartprod@gmail.com
-    """
-    try:
-        # Save to database
-        contact_data = request.model_dump()
-        contact_data['id'] = str(uuid.uuid4())
-        contact_data['timestamp'] = datetime.now(timezone.utc).isoformat()
-        contact_data['status'] = 'pending'
-        
-        await db.contacts.insert_one(contact_data)
-        
-        # Send email in background
-        background_tasks.add_task(
-            send_contact_email,
-            request.name,
-            request.email,
-            request.phone,
-            request.company,
-            request.service,
-            request.message
-        )
-        
-        return ContactFormResponse(
-            status="success",
-            message="Mensagem enviada com sucesso!"
-        )
-        
-    except EmailDeliveryError as e:
-        logger.error(f"Email delivery error: {str(e)}")
-        raise HTTPException(status_code=500, detail="Erro ao enviar email")
-    except Exception as e:
-        logger.error(f"Contact form error: {str(e)}")
-        raise HTTPException(status_code=500, detail="Erro ao processar formulário")
-
 
 # Include the router in the main app
 app.include_router(api_router)
+app.include_router(auth_router.router)
+app.include_router(admin_router.router)
+app.include_router(client_portal_router.router)
 
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+app.add_middleware(SlowAPIMiddleware)
+
+# CORSMiddleware precisa ser o último adicionado para envolver o
+# SlowAPIMiddleware por fora — assim respostas 429 também recebem
+# os headers de CORS corretos.
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
@@ -129,12 +86,30 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.middleware("http")
+async def add_security_headers(request, call_next):
+    response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    return response
+
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+@app.on_event("startup")
+async def warn_default_jwt_secret():
+    if os.environ.get("JWT_SECRET") is None:
+        logger.warning(
+            "JWT_SECRET não definido — usando valor padrão inseguro. "
+            "Defina JWT_SECRET no .env antes de ir para produção."
+        )
 
 @app.on_event("shutdown")
 async def shutdown_db_client():

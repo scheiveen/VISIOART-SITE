@@ -1,0 +1,6 @@
+# Dependências extras só para desenvolvimento/testes locais (não vão pro deploy).
+-r requirements.txt
+pytest
+pytest-asyncio
+httpx
+mongomock-motor

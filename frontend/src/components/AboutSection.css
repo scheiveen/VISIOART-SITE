@@ -1,12 +1,36 @@
 .about-section {
   padding: 8rem 4rem;
   border-top: 1px solid rgba(245, 242, 238, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-bg-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.about-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.08;
+  filter: grayscale(100%);
+}
+
+.about-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(8, 8, 8, 0.95) 0%, rgba(8, 8, 8, 0.85) 100%);
 }
 
 .about-grid {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .about-left {

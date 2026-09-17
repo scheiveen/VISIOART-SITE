@@ -1,97 +1,120 @@
-// Mock data based on the original HTML design
+// Mock data with VIDEO URLs for VISIOART
 
 export const mockServices = [
   {
     id: 1,
     num: "01",
-    icon: "💍",
-    name: "Vídeos de Casamento",
-    desc: "Registro cinematográfico do dia mais importante com storytelling emocional",
+    name: "Histórias de Amor Transformadas em Cinema",
+    desc: "Eternizamos o dia mais importante da sua vida em um filme que você vai assistir com seus filhos e netos",
     image:
-      "https://images.unsplash.com/photo-1770217614322-0e3bd39ed212?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
+      "https://images.unsplash.com/photo-1680624528924-7ee5542e4f4d?w=800&q=80",
+    emotion: "Memória Emocional",
   },
   {
     id: 2,
     num: "02",
-    icon: "🎉",
-    name: "Eventos Corporativos",
-    desc: "Cobertura profissional de convenções, lançamentos e festas empresariais",
+    name: "Narrativas Visuais para Marcas que Desejam Autoridade",
+    desc: "Posicione sua marca como líder através de filmes que transmitem confiança, credibilidade e presença",
     image:
-      "https://images.unsplash.com/photo-1523580494863-6f3031224c94?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
+      "https://images.unsplash.com/photo-1508385082359-f38ae991e8f2?w=800&q=80",
+    emotion: "Autoridade e Percepção",
   },
   {
     id: 3,
     num: "03",
-    icon: "🎬",
-    name: "Filmes Institucionais",
-    desc: "Produções que fortalecem identidade corporativa e posicionamento de marca",
+    name: "Filmes que Fortalecem Identidade e Propósito",
+    desc: "Mostre ao mundo não apenas o que você faz, mas por que você existe e o impacto que você gera",
     image:
-      "https://images.pexels.com/photos/4064838/pexels-photo-4064838.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20%281%20of%201%29-5.jpg?w=800&q=80",
+    emotion: "Legado Corporativo",
   },
   {
     id: 4,
     num: "04",
-    icon: "📱",
-    name: "Conteúdo Digital",
-    desc: "Vídeos otimizados para redes sociais com impacto visual e engajamento",
+    name: "Presença Visual para Marcas que Desejam Ser Lembradas",
+    desc: "Destaque-se nas redes sociais com conteúdo que gera conexão emocional e engajamento verdadeiro",
     image:
-      "https://images.unsplash.com/photo-1758273239210-59fea02475eb?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
+      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80",
+    emotion: "Conexão Digital",
   },
   {
     id: 5,
     num: "05",
-    icon: "🎭",
-    name: "Publicidade",
-    desc: "Campanhas comerciais com conceito criativo e execução premium",
+    name: "Campanhas que Transformam Percepção em Desejo",
+    desc: "Crie uma conexão emocional tão forte que seu público não apenas veja, mas sinta e queira fazer parte",
     image:
-      "https://images.pexels.com/photos/5878870/pexels-photo-5878870.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.unsplash.com/photo-1630948688037-aa88dc433a57?w=800&q=80",
+    emotion: "Impacto Comercial",
   },
   {
     id: 6,
     num: "06",
-    icon: "🏗️",
-    name: "Construção Civil",
-    desc: "Filmes técnicos e promocionais para empreendimentos e obras",
+    name: "Projetos que Vendem Sonhos, Não Apenas Imóveis",
+    desc: "Transforme empreendimentos em histórias de realização, mostrando não só o espaço, mas a vida que acontecerá ali",
     image:
-      "https://images.unsplash.com/photo-1772551419713-302fc638b035?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
+    emotion: "Aspiração e Conquista",
   },
 ];
 
 export const mockPortfolio = [
   {
     id: 1,
-    tag: "Casamento",
-    title: "...",
-    image:
-      "https://images.unsplash.com/photo-1519741497674-611481863552?w=1200",
+    tag: "Pedido de Casamento",
+    title: "João & Julia",
+    video:
+      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846014/PEDIDO_JOA%CC%83O_HORIZONTAL_SITE_ihq4yw.mov",
+    thumbnail:
+      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/PEDIDO_JOA%CC%83O_HORIZONTAL_SITE_ihq4yw.jpg",
     featured: true,
   },
   {
     id: 2,
     tag: "Institucional",
-    title: "...",
-    image: "https://images.unsplash.com/photo-1597465103212-7cd0b847a246?w=800",
+    title: "Secretaria de Saude de Alfredo Wagner",
+    video:
+      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846438/SAUDE_SITE_jxin5y.mov",
+    thumbnail:
+      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/SAUDE_SITE_jxin5y.jpg",
   },
   {
     id: 3,
-    tag: "Evento",
-    title: "...",
-    image:
-      "https://images.pexels.com/photos/6621438/pexels-photo-6621438.jpeg?w=800",
+    tag: "Aniversário de 15 anos",
+    title: "Isabela",
+    video:
+      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846015/ENSAIO_ISA_SITE_lbtnq2.mov",
+    thumbnail:
+      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/ENSAIO_ISA_SITE_lbtnq2.jpg",
   },
   {
     id: 4,
-    tag: "Comercial",
-    title: "...",
-    image: "https://images.unsplash.com/photo-1570834322056-ba3e2994ab85?w=800",
+    tag: "Cerimônia de Casamento",
+    title: "Marina & Andrigo",
+    video:
+      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1780511947/MARINA_SITE_f3txsw.mov",
+    thumbnail:
+      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/MARINA_SITE_f3txsw.jpg",
   },
   {
     id: 5,
-    tag: "Aniversário",
-    title: "ANIVERSÁRIO DE 15 ANOS DA ISABELA",
-    image: "/img/aniverisa.jpeg",
+    tag: "Construção",
+    title: "Recanto das Américas Wellness Resort & Spa",
+    video:
+      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846002/RESORT_SITE_1_sohhwy.mov",
+    thumbnail:
+      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/RESORT_SITE_1_sohhwy.jpg",
   },
 ];
+
+export const heroVideo = {
+  desktop:
+    "https://videos.pexels.com/video-files/3209828/3209828-hd_1920_1080_25fps.mp4",
+  mobile:
+    "https://videos.pexels.com/video-files/3209828/3209828-hd_1280_720_25fps.mp4",
+};
+
+export const aboutVideo =
+  "https://videos.pexels.com/video-files/4625771/4625771-hd_1920_1080_30fps.mp4";
 
 export const mockProcess = [
   {
@@ -127,7 +150,7 @@ export const mockProcess = [
 ];
 
 export const statsData = [
-  { number: "+50", label: "PROJETOS REALIZADOS" },
+  { number: "50+", label: "PROJETOS REALIZADOS" },
   { number: "3", label: "ANOS DE EXPERIÊNCIA" },
   { number: "100%", label: "CLIENTES SATISFEITOS" },
 ];
@@ -137,7 +160,7 @@ export const contactInfo = {
   whatsappDisplay: "+55 (48) 99947-8281",
   email: "visioartprod@gmail.com",
   instagram: "@visioart.prod",
-  location: "Alfredo Wagner, SC",
+  location: "SANTA CATARINA - BRASIL",
 };
 
 export const marqueeText = [
@@ -146,4 +169,12 @@ export const marqueeText = [
   "EMOÇÃO",
   "CRIATIVIDADE",
   "PRODUÇÃO",
+];
+
+export const ambientMusicList = [
+  "/audio/Interstellar Official Soundtrack _ Cornfield Chase – Hans Zimmer _ WaterTower.mp3",
+  "/audio/We Dream of Eden - Ascension.mp3",
+  "/audio/We Dream of Eden - Bloom Again.mp3",
+  "/audio/We Dream of Eden - Discovery.mp3",
+  "/audio/We Dream of Eden - Outside In.mp3",
 ];
