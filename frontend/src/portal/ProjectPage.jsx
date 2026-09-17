@@ -9,7 +9,12 @@ import { Skeleton } from "../components/ui/skeleton";
 import EmptyState from "../components/shared/EmptyState";
 import ErrorState from "../components/shared/ErrorState";
 import api from "../lib/api";
-import { CATEGORY_GROUP, CATEGORY_GROUPS, CATEGORY_LABELS, STATUS_LABELS } from "../lib/constants";
+import {
+  CATEGORY_GROUP,
+  CATEGORY_GROUPS,
+  CATEGORY_LABELS,
+  STATUS_LABELS,
+} from "../lib/constants";
 import "./portal.css";
 
 function groupMaterials(materials) {
@@ -21,7 +26,80 @@ function groupMaterials(materials) {
   return groups;
 }
 
-function VideoCard({ material }) {
+function MaterialPreviewDialog({ material, onClose }) {
+  if (!material) return null;
+
+  const group = CATEGORY_GROUP[material.category];
+  const previewSrc = material.preview_url || material.thumbnail_url;
+
+  return (
+    <Dialog
+      open={Boolean(material)}
+      onOpenChange={(open) => !open && onClose()}
+    >
+      <DialogContent className="bg-card border-border max-w-4xl">
+        <div className="space-y-4">
+          <div className="rounded-lg overflow-hidden bg-secondary min-h-40 flex items-center justify-center">
+            {group === "videos" && material.preview_url ? (
+              <video
+                controls
+                className="w-full max-h-[70vh]"
+                poster={material.thumbnail_url || undefined}
+                src={material.preview_url}
+              >
+                Seu navegador não suporta reprodução de vídeo.
+              </video>
+            ) : group === "fotos" && previewSrc ? (
+              <img
+                src={previewSrc}
+                alt={material.name}
+                className="w-full max-h-[70vh] object-contain"
+              />
+            ) : material.preview_url ? (
+              <iframe
+                title={`Prévia de ${material.name}`}
+                src={material.preview_url}
+                className="w-full h-[70vh]"
+              />
+            ) : (
+              <p className="text-sm text-muted-foreground px-6 py-12 text-center">
+                Prévia indisponível para este material.
+              </p>
+            )}
+          </div>
+          <div className="flex items-center justify-between gap-4">
+            <div className="min-w-0">
+              <p className="font-medium truncate">{material.name}</p>
+              <p className="text-xs text-muted-foreground">
+                {CATEGORY_LABELS[material.category]}
+              </p>
+              {material.description && (
+                <p className="text-sm text-muted-foreground mt-2">
+                  {material.description}
+                </p>
+              )}
+            </div>
+            {material.download_allowed && material.file_url && (
+              <Button
+                asChild
+                size="sm"
+                variant="outline"
+                className="gap-2 shrink-0"
+              >
+                <a href={material.file_url} target="_blank" rel="noreferrer">
+                  <Download className="h-3.5 w-3.5" />
+                  Baixar
+                </a>
+              </Button>
+            )}
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+function VideoCard({ material, onOpen }) {
   return (
     <Card className="bg-card border-border overflow-hidden">
       <div className="aspect-video bg-black">
@@ -38,18 +116,30 @@ function VideoCard({ material }) {
         ) : (
           <div className="w-full h-full flex items-center justify-center text-center px-4">
             <p className="text-sm text-muted-foreground">
-              Prévia indisponível. {material.download_allowed ? "Baixe o vídeo abaixo." : ""}
+              Prévia indisponível.{" "}
+              {material.download_allowed ? "Baixe o vídeo abaixo." : ""}
             </p>
           </div>
         )}
       </div>
       <CardContent className="pt-4 flex items-center justify-between gap-3">
-        <div>
+        <button
+          type="button"
+          onClick={() => onOpen(material)}
+          className="text-left min-w-0 hover:text-primary transition-colors"
+        >
           <p className="font-medium">{material.name}</p>
-          <p className="text-xs text-muted-foreground">{CATEGORY_LABELS[material.category]}</p>
-        </div>
+          <p className="text-xs text-muted-foreground">
+            {CATEGORY_LABELS[material.category]}
+          </p>
+        </button>
         {material.download_allowed && material.file_url && (
-          <Button asChild size="sm" variant="outline" className="gap-2 shrink-0">
+          <Button
+            asChild
+            size="sm"
+            variant="outline"
+            className="gap-2 shrink-0"
+          >
             <a href={material.file_url} target="_blank" rel="noreferrer">
               <Download className="h-3.5 w-3.5" />
               Baixar
@@ -92,7 +182,10 @@ function PhotoGrid({ materials }) {
         })}
       </div>
 
-      <Dialog open={Boolean(lightbox)} onOpenChange={(open) => !open && setLightbox(null)}>
+      <Dialog
+        open={Boolean(lightbox)}
+        onOpenChange={(open) => !open && setLightbox(null)}
+      >
         <DialogContent className="bg-card border-border max-w-3xl">
           {lightbox && (
             <div className="space-y-3">
@@ -105,7 +198,11 @@ function PhotoGrid({ materials }) {
                 <p className="text-sm">{lightbox.name}</p>
                 {lightbox.download_allowed && lightbox.file_url && (
                   <Button asChild size="sm" variant="outline" className="gap-2">
-                    <a href={lightbox.file_url} target="_blank" rel="noreferrer">
+                    <a
+                      href={lightbox.file_url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <Download className="h-3.5 w-3.5" />
                       Baixar
                     </a>
@@ -120,14 +217,27 @@ function PhotoGrid({ materials }) {
   );
 }
 
-function FileRow({ material }) {
+function FileRow({ material, onOpen }) {
   return (
-    <div className="flex items-center justify-between gap-3 py-3 px-4 border border-border rounded-lg">
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => onOpen(material)}
+      onKeyDown={(event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          onOpen(material);
+        }
+      }}
+      className="w-full flex items-center justify-between gap-3 py-3 px-4 border border-border rounded-lg text-left hover:border-primary/50 transition-colors"
+    >
       <div className="flex items-center gap-3 min-w-0">
         <FileText className="h-4 w-4 text-muted-foreground shrink-0" />
         <div className="min-w-0">
           <p className="text-sm font-medium truncate">{material.name}</p>
-          <p className="text-xs text-muted-foreground">{CATEGORY_LABELS[material.category]}</p>
+          <p className="text-xs text-muted-foreground">
+            {CATEGORY_LABELS[material.category]}
+          </p>
         </div>
       </div>
       {material.download_allowed && material.file_url ? (
@@ -138,7 +248,9 @@ function FileRow({ material }) {
           </a>
         </Button>
       ) : (
-        <span className="text-xs text-muted-foreground shrink-0">Download não liberado</span>
+        <span className="text-xs text-muted-foreground shrink-0">
+          Download não liberado
+        </span>
       )}
     </div>
   );
@@ -190,6 +302,7 @@ export default function ProjectPage() {
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [error, setError] = useState(false);
+  const [selectedMaterial, setSelectedMaterial] = useState(null);
 
   async function load() {
     setLoading(true);
@@ -246,12 +359,19 @@ export default function ProjectPage() {
   const groups = groupMaterials(materials);
 
   const featuredVideo =
-    groups.videos.find((m) => m.category === "video_principal" && m.preview_url) ||
-    groups.videos.find((m) => m.preview_url);
-  const secondaryVideos = groups.videos.filter((m) => m.id !== featuredVideo?.id);
+    groups.videos.find(
+      (m) => m.category === "video_principal" && m.preview_url,
+    ) || groups.videos.find((m) => m.preview_url);
+  const secondaryVideos = groups.videos.filter(
+    (m) => m.id !== featuredVideo?.id,
+  );
 
   return (
     <div className="space-y-8">
+      <MaterialPreviewDialog
+        material={selectedMaterial}
+        onClose={() => setSelectedMaterial(null)}
+      />
       <Link
         to="/cliente"
         className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -279,10 +399,14 @@ export default function ProjectPage() {
           <h1 className="font-display text-5xl md:text-6xl tracking-wide uppercase">
             {project.name}
           </h1>
-          <Badge variant="secondary">{STATUS_LABELS[project.status] || project.status}</Badge>
+          <Badge variant="secondary">
+            {STATUS_LABELS[project.status] || project.status}
+          </Badge>
         </div>
         {project.description && (
-          <p className="portal-greeting text-xl max-w-2xl mx-auto">{project.description}</p>
+          <p className="portal-greeting text-xl max-w-2xl mx-auto">
+            {project.description}
+          </p>
         )}
         {project.date && (
           <p className="text-sm text-muted-foreground">
@@ -309,17 +433,25 @@ export default function ProjectPage() {
         />
       ) : (
         CATEGORY_GROUPS.map((group) => {
-          const items = group.key === "videos" ? secondaryVideos : groups[group.key];
+          const items =
+            group.key === "videos" ? secondaryVideos : groups[group.key];
           if (items.length === 0) return null;
           return (
             <section key={group.key} className="space-y-6 text-center">
               <h2 className="font-display text-2xl tracking-wide uppercase text-muted-foreground">
-                {group.emoji} {group.key === "videos" && featuredVideo ? "Mais vídeos" : group.label}
+                {group.emoji}{" "}
+                {group.key === "videos" && featuredVideo
+                  ? "Mais vídeos"
+                  : group.label}
               </h2>
               {group.key === "videos" && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
                   {items.map((m) => (
-                    <VideoCard key={m.id} material={m} />
+                    <VideoCard
+                      key={m.id}
+                      material={m}
+                      onOpen={setSelectedMaterial}
+                    />
                   ))}
                 </div>
               )}
@@ -331,7 +463,11 @@ export default function ProjectPage() {
               {group.key === "arquivos" && (
                 <div className="space-y-2 max-w-2xl mx-auto text-left">
                   {items.map((m) => (
-                    <FileRow key={m.id} material={m} />
+                    <FileRow
+                      key={m.id}
+                      material={m}
+                      onOpen={setSelectedMaterial}
+                    />
                   ))}
                 </div>
               )}
