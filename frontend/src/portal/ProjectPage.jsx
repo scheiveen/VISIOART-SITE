@@ -29,14 +29,19 @@ function groupMaterials(materials) {
 function getGoogleDrivePreviewUrl(fileUrl) {
   if (!fileUrl || !fileUrl.includes("drive.google.com")) return null;
 
-  const fileId = fileUrl.match(/\/file\/d\/([^/]+)/)?.[1] ||
+  const fileId =
+    fileUrl.match(/\/file\/d\/([^/]+)/)?.[1] ||
     new URLSearchParams(fileUrl.split("?")[1] || "").get("id");
 
   return fileId ? `https://drive.google.com/file/d/${fileId}/preview` : null;
 }
 
 function getMaterialPreviewUrl(material) {
-  return material.preview_url || material.thumbnail_url || getGoogleDrivePreviewUrl(material.file_url);
+  return (
+    material.preview_url ||
+    material.thumbnail_url ||
+    getGoogleDrivePreviewUrl(material.file_url)
+  );
 }
 
 function getMaterialImageUrl(material) {
@@ -76,7 +81,7 @@ function MaterialPreviewDialog({ material, onClose }) {
             ) : previewSrc ? (
               <iframe
                 title={`Prévia de ${material.name}`}
-                src={material.preview_url}
+                src={previewSrc}
                 className="w-full h-[70vh]"
               />
             ) : (
