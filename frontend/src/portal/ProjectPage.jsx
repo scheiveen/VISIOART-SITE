@@ -26,11 +26,29 @@ function groupMaterials(materials) {
   return groups;
 }
 
+function getGoogleDrivePreviewUrl(fileUrl) {
+  if (!fileUrl || !fileUrl.includes("drive.google.com")) return null;
+
+  const fileId = fileUrl.match(/\/file\/d\/([^/]+)/)?.[1] ||
+    new URLSearchParams(fileUrl.split("?")[1] || "").get("id");
+
+  return fileId ? `https://drive.google.com/file/d/${fileId}/preview` : null;
+}
+
+function getMaterialPreviewUrl(material) {
+  return material.preview_url || material.thumbnail_url || getGoogleDrivePreviewUrl(material.file_url);
+}
+
+function getMaterialImageUrl(material) {
+  return material.preview_url || material.thumbnail_url || null;
+}
+
 function MaterialPreviewDialog({ material, onClose }) {
   if (!material) return null;
 
   const group = CATEGORY_GROUP[material.category];
-  const previewSrc = material.preview_url || material.thumbnail_url;
+  const previewSrc = getMaterialPreviewUrl(material);
+  const imageSrc = getMaterialImageUrl(material);
 
   return (
     <Dialog
@@ -49,13 +67,13 @@ function MaterialPreviewDialog({ material, onClose }) {
               >
                 Seu navegador não suporta reprodução de vídeo.
               </video>
-            ) : group === "fotos" && previewSrc ? (
+            ) : group === "fotos" && imageSrc ? (
               <img
-                src={previewSrc}
+                src={imageSrc}
                 alt={material.name}
                 className="w-full max-h-[70vh] object-contain"
               />
-            ) : material.preview_url ? (
+            ) : previewSrc ? (
               <iframe
                 title={`Prévia de ${material.name}`}
                 src={material.preview_url}
@@ -158,12 +176,12 @@ function PhotoGrid({ materials }) {
     <>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
         {materials.map((m) => {
-          const src = m.preview_url || m.thumbnail_url;
+          const src = getMaterialImageUrl(m);
           return (
             <button
               key={m.id}
               type="button"
-              onClick={() => src && setLightbox(m)}
+              onClick={() => (src || m.file_url) && setLightbox(m)}
               className="aspect-square rounded-lg overflow-hidden bg-secondary border border-border group"
             >
               {src ? (
@@ -189,11 +207,19 @@ function PhotoGrid({ materials }) {
         <DialogContent className="bg-card border-border max-w-3xl">
           {lightbox && (
             <div className="space-y-3">
-              <img
-                src={lightbox.preview_url || lightbox.thumbnail_url}
-                alt={lightbox.name}
-                className="w-full max-h-[70vh] object-contain rounded-md"
-              />
+              {getMaterialImageUrl(lightbox) ? (
+                <img
+                  src={getMaterialImageUrl(lightbox)}
+                  alt={lightbox.name}
+                  className="w-full max-h-[70vh] object-contain rounded-md"
+                />
+              ) : (
+                <iframe
+                  title={`Prévia de ${lightbox.name}`}
+                  src={getMaterialPreviewUrl(lightbox)}
+                  className="w-full h-[70vh]"
+                />
+              )}
               <div className="flex items-center justify-between">
                 <p className="text-sm">{lightbox.name}</p>
                 {lightbox.download_allowed && lightbox.file_url && (
@@ -360,8 +386,8 @@ export default function ProjectPage() {
 
   const featuredVideo =
     groups.videos.find(
-      (m) => m.category === "video_principal" && m.preview_url,
-    ) || groups.videos.find((m) => m.preview_url);
+      (m) => m.category === "video_principal" && getMaterialPreviewUrl(m),
+    ) || groups.videos.find((m) => getMaterialPreviewUrl(m));
   const secondaryVideos = groups.videos.filter(
     (m) => m.id !== featuredVideo?.id,
   );
