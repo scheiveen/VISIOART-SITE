@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "";
+const BACKEND_URL =
+  process.env.REACT_APP_BACKEND_URL ||
+  (process.env.NODE_ENV === "production"
+    ? "https://visioart-backend.onrender.com"
+    : "");
 const TOKEN_KEY = "visioart_token";
 
 export const api = axios.create({
