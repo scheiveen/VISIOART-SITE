@@ -102,7 +102,7 @@ function MaterialPreviewDialog({ material, onClose }) {
                 </p>
               )}
             </div>
-            {material.download_allowed && material.file_url && (
+            {material.file_url && (
               <Button
                 asChild
                 size="sm"
@@ -156,7 +156,7 @@ function VideoCard({ material, onOpen }) {
             {CATEGORY_LABELS[material.category]}
           </p>
         </button>
-        {material.download_allowed && material.file_url && (
+        {material.file_url && (
           <Button
             asChild
             size="sm"
@@ -227,7 +227,7 @@ function PhotoGrid({ materials }) {
               )}
               <div className="flex items-center justify-between">
                 <p className="text-sm">{lightbox.name}</p>
-                {lightbox.download_allowed && lightbox.file_url && (
+                {lightbox.file_url && (
                   <Button asChild size="sm" variant="outline" className="gap-2">
                     <a
                       href={lightbox.file_url}
@@ -271,7 +271,7 @@ function FileRow({ material, onOpen }) {
           </p>
         </div>
       </div>
-      {material.download_allowed && material.file_url ? (
+      {material.file_url ? (
         <Button asChild size="sm" variant="outline" className="gap-2 shrink-0">
           <a href={material.file_url} target="_blank" rel="noreferrer">
             <Download className="h-3.5 w-3.5" />
@@ -311,6 +311,8 @@ function StatsBar({ groups }) {
 }
 
 function HeroVideo({ material, poster }) {
+  const previewUrl = getMaterialPreviewUrl(material);
+
   return (
     <div className="rounded-xl overflow-hidden bg-black aspect-video lg:aspect-[21/9]">
       <video
@@ -318,7 +320,7 @@ function HeroVideo({ material, poster }) {
         controlsList="nodownload"
         className="w-full h-full"
         poster={material.thumbnail_url || poster || undefined}
-        src={material.preview_url}
+        src={previewUrl}
       >
         Seu navegador não suporta reprodução de vídeo.
       </video>
@@ -444,7 +446,7 @@ export default function ProjectPage() {
             {new Date(project.date).toLocaleDateString("pt-BR")}
           </p>
         )}
-        {featuredVideo?.download_allowed && featuredVideo?.file_url && (
+        {featuredVideo?.file_url && (
           <Button asChild size="lg" variant="outline" className="gap-2">
             <a href={featuredVideo.file_url} target="_blank" rel="noreferrer">
               <Download className="h-4 w-4" />
