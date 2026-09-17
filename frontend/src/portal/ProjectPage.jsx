@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, Download, FileText } from "lucide-react";
+import { ArrowLeft, Download, ExternalLink, FileText } from "lucide-react";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
@@ -132,6 +132,14 @@ function MaterialPreviewDialog({ material, onClose }) {
                 <a href={material.file_url} target="_blank" rel="noreferrer">
                   <Download className="h-3.5 w-3.5" />
                   Baixar
+                </a>
+              </Button>
+            )}
+            {previewSrc && (
+              <Button asChild size="sm" className="gap-2 shrink-0">
+                <a href={previewSrc} target="_blank" rel="noreferrer">
+                  <ExternalLink className="h-3.5 w-3.5" />
+                  Abrir preview
                 </a>
               </Button>
             )}
@@ -272,6 +280,18 @@ function PhotoGrid({ materials }) {
                     >
                       <Download className="h-3.5 w-3.5" />
                       Baixar
+                    </a>
+                  </Button>
+                )}
+                {getMaterialPreviewUrl(lightbox) && (
+                  <Button asChild size="sm" className="gap-2">
+                    <a
+                      href={getMaterialPreviewUrl(lightbox)}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <ExternalLink className="h-3.5 w-3.5" />
+                      Abrir preview
                     </a>
                   </Button>
                 )}
