@@ -15,7 +15,7 @@ const HeroSection = () => {
   return (
     <section id="hero" className="hero">
       <div className="hero-bg">
-        <video className="hero-video" autoPlay loop muted playsInline poster="">
+        <video className="hero-video" autoPlay loop muted playsInline aria-hidden="true">
           <source src={heroVideo.desktop} type="video/mp4" />
         </video>
         <div className="hero-overlay"></div>
@@ -24,7 +24,7 @@ const HeroSection = () => {
       </div>
 
       <div className="hero-content">
-        <span className="hero-eyebrow">PRODUÇÃO AUDIOVISUAL</span>
+        <span className="hero-eyebrow">PRODUTORA AUDIOVISUAL · SANTA CATARINA</span>
         <h1 className="hero-title">
           Transformamos histórias reais em{" "}
           <em>filmes que permanecem por gerações</em>

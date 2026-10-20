@@ -20,7 +20,14 @@
       "continue": true
     },
     {
-      "src": "/(.*\\.(js|css|json|ico|png|jpg|jpeg|gif|svg|webp|avif|mp4|webm|ogg|mp3|wav|woff|woff2|ttf|eot|map|txt|xml|pdf))",
+      "src": "/(admin|cliente)(/.*)?",
+      "headers": {
+        "X-Robots-Tag": "noindex, nofollow"
+      },
+      "continue": true
+    },
+    {
+      "src": "/(.*\\.(js|css|json|ico|png|jpg|jpeg|gif|svg|webp|avif|mp4|webm|ogg|mp3|wav|woff|woff2|ttf|eot|map|txt|xml|pdf|webmanifest))",
       "dest": "/frontend/$1"
     },
     {

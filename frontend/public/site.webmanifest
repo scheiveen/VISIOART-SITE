@@ -1,0 +1,13 @@
+{
+  "name": "VISIOART Productions",
+  "short_name": "VISIOART",
+  "description": "Produtora audiovisual em Santa Catarina",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "icons": [
+    { "src": "/favicon.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any" }
+  ]
+}

@@ -83,6 +83,14 @@
   flex-direction: column;
 }
 
+.service-category {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
 .service-name {
   font-family: var(--serif);
   font-size: clamp(1.5rem, 2.5vw, 1.8rem);

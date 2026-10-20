@@ -29,7 +29,7 @@ const AboutSection = () => {
   return (
     <section id="sobre" className="about-section" ref={sectionRef}>
       <div className="about-bg-video">
-        <video className="about-video" autoPlay loop muted playsInline>
+        <video className="about-video" autoPlay loop muted playsInline aria-hidden="true">
           <source
             src="https://videos.pexels.com/video-files/4625771/4625771-hd_1920_1080_30fps.mp4"
             type="video/mp4"
@@ -48,13 +48,15 @@ const AboutSection = () => {
           <div className="about-text">
             <p>
               Na <strong>VISIOART</strong>, cada frame conta uma história. Somos
-              uma produtora audiovisual que une <em>arte, técnica e emoção </em>
+              uma produtora audiovisual em Santa Catarina que une <em>arte, técnica e emoção </em>
               para criar filmes que transcendem o comum.
             </p>
             <p>
               Especializamo-nos em capturar momentos únicos e transformá-los em{" "}
               <strong>narrativas cinematográficas </strong>
-              que permanecem na memória.
+              que permanecem na memória: filmes de casamento e 15 anos, vídeos
+              institucionais, publicidade, conteúdo para redes sociais e
+              vídeos imobiliários.
             </p>
           </div>
 

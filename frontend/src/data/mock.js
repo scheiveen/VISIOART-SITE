@@ -4,6 +4,7 @@ export const mockServices = [
   {
     id: 1,
     num: "01",
+    category: "Filmes de Casamento",
     name: "Histórias de Amor Transformadas em Cinema",
     desc: "Eternizamos o dia mais importante da sua vida em um filme que você vai assistir com seus filhos e netos",
     image:
@@ -13,6 +14,7 @@ export const mockServices = [
   {
     id: 2,
     num: "02",
+    category: "Vídeo Institucional",
     name: "Narrativas Visuais para Marcas que Desejam Autoridade",
     desc: "Posicione sua marca como líder através de filmes que transmitem confiança, credibilidade e presença",
     image:
@@ -22,6 +24,7 @@ export const mockServices = [
   {
     id: 3,
     num: "03",
+    category: "Documentário de Marca",
     name: "Filmes que Fortalecem Identidade e Propósito",
     desc: "Mostre ao mundo não apenas o que você faz, mas por que você existe e o impacto que você gera",
     image:
@@ -31,6 +34,7 @@ export const mockServices = [
   {
     id: 4,
     num: "04",
+    category: "Conteúdo para Redes Sociais",
     name: "Presença Visual para Marcas que Desejam Ser Lembradas",
     desc: "Destaque-se nas redes sociais com conteúdo que gera conexão emocional e engajamento verdadeiro",
     image:
@@ -40,6 +44,7 @@ export const mockServices = [
   {
     id: 5,
     num: "05",
+    category: "Publicidade e Campanhas",
     name: "Campanhas que Transformam Percepção em Desejo",
     desc: "Crie uma conexão emocional tão forte que seu público não apenas veja, mas sinta e queira fazer parte",
     image:
@@ -49,6 +54,7 @@ export const mockServices = [
   {
     id: 6,
     num: "06",
+    category: "Vídeo Imobiliário",
     name: "Projetos que Vendem Sonhos, Não Apenas Imóveis",
     desc: "Transforme empreendimentos em histórias de realização, mostrando não só o espaço, mas a vida que acontecerá ali",
     image:
@@ -57,52 +63,50 @@ export const mockServices = [
   },
 ];
 
+// Vídeos servidos como MP4 (H.264) via Cloudinary: os originais .mov tinham
+// 35–85 MB cada e não tocam em todos os navegadores. A miniatura é um frame
+// extraído do próprio vídeo.
+const CLOUDINARY_VIDEO = "https://res.cloudinary.com/dzv2rrgj0/video/upload";
+const portfolioVideo = (id) => `${CLOUDINARY_VIDEO}/q_auto,w_1280/${id}.mp4`;
+const portfolioThumb = (id) =>
+  `${CLOUDINARY_VIDEO}/so_2,w_1200,h_675,c_fill,q_auto,f_auto/${id}.jpg`;
+
 export const mockPortfolio = [
   {
     id: 1,
     tag: "Pedido de Casamento",
     title: "João & Julia",
-    video:
-      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846014/PEDIDO_JOA%CC%83O_HORIZONTAL_SITE_ihq4yw.mov",
-    thumbnail:
-      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/PEDIDO_JOA%CC%83O_HORIZONTAL_SITE_ihq4yw.jpg",
+    video: portfolioVideo("v1778846014/PEDIDO_JOA%CC%83O_HORIZONTAL_SITE_ihq4yw"),
+    thumbnail: portfolioThumb("v1778846014/PEDIDO_JOA%CC%83O_HORIZONTAL_SITE_ihq4yw"),
     featured: true,
   },
   {
     id: 2,
     tag: "Institucional",
-    title: "Secretaria de Saude de Alfredo Wagner",
-    video:
-      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846438/SAUDE_SITE_jxin5y.mov",
-    thumbnail:
-      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/SAUDE_SITE_jxin5y.jpg",
+    title: "Secretaria de Saúde de Alfredo Wagner",
+    video: portfolioVideo("v1778846438/SAUDE_SITE_jxin5y"),
+    thumbnail: portfolioThumb("v1778846438/SAUDE_SITE_jxin5y"),
   },
   {
     id: 3,
     tag: "Aniversário de 15 anos",
     title: "Isabela",
-    video:
-      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846015/ENSAIO_ISA_SITE_lbtnq2.mov",
-    thumbnail:
-      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/ENSAIO_ISA_SITE_lbtnq2.jpg",
+    video: portfolioVideo("v1778846015/ENSAIO_ISA_SITE_lbtnq2"),
+    thumbnail: portfolioThumb("v1778846015/ENSAIO_ISA_SITE_lbtnq2"),
   },
   {
     id: 4,
     tag: "Cerimônia de Casamento",
     title: "Marina & Andrigo",
-    video:
-      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1780511947/MARINA_SITE_f3txsw.mov",
-    thumbnail:
-      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/MARINA_SITE_f3txsw.jpg",
+    video: portfolioVideo("v1780511947/MARINA_SITE_f3txsw"),
+    thumbnail: portfolioThumb("v1780511947/MARINA_SITE_f3txsw"),
   },
   {
     id: 5,
     tag: "Construção",
     title: "Recanto das Américas Wellness Resort & Spa",
-    video:
-      "https://res.cloudinary.com/dzv2rrgj0/video/upload/v1778846002/RESORT_SITE_1_sohhwy.mov",
-    thumbnail:
-      "https://res.cloudinary.com/dzv2rrgj0/image/upload/w_1200,h_675,c_fill,g_auto,q_auto,f_auto/RESORT_SITE_1_sohhwy.jpg",
+    video: portfolioVideo("v1778846002/RESORT_SITE_1_sohhwy"),
+    thumbnail: portfolioThumb("v1778846002/RESORT_SITE_1_sohhwy"),
   },
 ];
 

@@ -4,10 +4,8 @@ import { MessageCircle, Mail, Instagram, MapPin } from 'lucide-react';
 import './ContactSection.css';
 
 const ContactSection = () => {
-  const handleWhatsApp = () => {
-    const message = encodeURIComponent('Olá! Gostaria de saber mais sobre os serviços da VISIOART.');
-    window.open(`https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}?text=${message}`, '_blank');
-  };
+  const whatsappMessage = encodeURIComponent('Olá! Gostaria de saber mais sobre os serviços da VISIOART.');
+  const whatsappUrl = `https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}?text=${whatsappMessage}`;
 
   return (
     <section id="contato" className="contact-section">
@@ -24,13 +22,18 @@ const ContactSection = () => {
               <h3>Fale Conosco</h3>
               
               <div className="contact-methods-grid">
-                <button onClick={handleWhatsApp} className="contact-method whatsapp">
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-method whatsapp"
+                >
                   <MessageCircle className="contact-icon" size={24} strokeWidth={1.5} />
                   <div className="contact-details">
                     <strong>WhatsApp</strong>
                     <p>{contactInfo.whatsappDisplay || contactInfo.whatsapp}</p>
                   </div>
-                </button>
+                </a>
 
                 <a href={`mailto:${contactInfo.email}`} className="contact-method">
                   <Mail className="contact-icon" size={24} strokeWidth={1.5} />

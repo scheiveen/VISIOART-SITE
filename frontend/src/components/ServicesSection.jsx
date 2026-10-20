@@ -37,23 +37,27 @@ const ServicesSection = () => {
 
       <div className="services-grid">
         {mockServices.map((service, index) => (
-          <div key={service.id} className="service-card reveal">
+          <article key={service.id} className="service-card reveal">
             <div className="service-image-wrapper">
               <img 
                 className="service-image"
                 src={service.image}
-                alt={service.name}
+                alt={`${service.category} — ${service.name}`}
                 loading="lazy"
+                decoding="async"
+                width="800"
+                height="533"
               />
               <div className="service-overlay">
                 <div className="service-num">{service.num}</div>
               </div>
             </div>
             <div className="service-content">
+              <span className="service-category">{service.category}</span>
               <h3 className="service-name">{service.name}</h3>
               <p className="service-desc">{service.desc}</p>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>

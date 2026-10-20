@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { mockPortfolio } from "../data/mock";
 import "./PortfolioSection.css";
 
@@ -7,64 +7,6 @@ const PortfolioSection = () => {
   const videoRefs = useRef(new Map());
   const [visibleItemIds, setVisibleItemIds] = useState([]);
   const [videoReadyIds, setVideoReadyIds] = useState([]);
-
-  const videoSources = useMemo(
-    () => Array.from(new Set(mockPortfolio.map((item) => item.video))),
-    [],
-  );
-
-  const thumbnailSources = useMemo(
-    () =>
-      Array.from(
-        new Set(mockPortfolio.map((item) => item.thumbnail).filter(Boolean)),
-      ),
-    [],
-  );
-
-  useEffect(() => {
-    const preloadLinks = thumbnailSources.map((src) => {
-      const link = document.createElement("link");
-      link.rel = "preload";
-      link.as = "image";
-      link.href = src;
-      document.head.appendChild(link);
-      return link;
-    });
-
-    const images = thumbnailSources.map((src) => {
-      const img = new Image();
-      img.src = src;
-      return img;
-    });
-
-    return () => {
-      preloadLinks.forEach((link) => document.head.removeChild(link));
-      images.forEach((img) => {
-        img.src = "";
-      });
-    };
-  }, [thumbnailSources]);
-
-  useEffect(() => {
-    const preloads = videoSources.map((src) => {
-      const link = document.createElement("link");
-      link.rel = "preload";
-      link.as = "video";
-      link.href = src;
-      const extension = src.split(".").pop().toLowerCase();
-      link.type =
-        extension === "mov" ? "video/quicktime" : `video/${extension}`;
-      link.crossOrigin = "anonymous";
-      document.head.appendChild(link);
-      return link;
-    });
-
-    return () => {
-      preloads.forEach((link) => {
-        document.head.removeChild(link);
-      });
-    };
-  }, [videoSources]);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -145,7 +87,7 @@ const PortfolioSection = () => {
 
       <div className="portfolio-grid">
         {mockPortfolio.map((item) => (
-          <div
+          <article
             key={item.id}
             data-id={item.id}
             className={`portfolio-item reveal ${item.featured ? "featured" : ""}`}
@@ -153,6 +95,8 @@ const PortfolioSection = () => {
             <div className="video-stage">
               <div
                 className="portfolio-video-placeholder"
+                role="img"
+                aria-label={`${item.tag}: ${item.title} — filme VISIOART`}
                 style={{
                   backgroundImage: `url(${item.thumbnail || item.video})`,
                 }}
@@ -165,6 +109,7 @@ const PortfolioSection = () => {
                   }}
                   className={`portfolio-video ${isVideoReady(item.id) ? "is-ready" : ""}`}
                   preload="auto"
+                  aria-label={`${item.tag}: ${item.title}`}
                   muted
                   playsInline
                   loop
@@ -182,7 +127,7 @@ const PortfolioSection = () => {
                 <h3 className="portfolio-title">{item.title}</h3>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>

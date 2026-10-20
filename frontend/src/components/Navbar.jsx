@@ -45,7 +45,7 @@ const Navbar = () => {
     <>
       <nav className={`site-navbar ${scrolled ? "scrolled" : ""}`}>
         <a href="#hero" className="nav-logo">
-          <img src="/img/5.png" alt="VISIOART" className="logo-img" />
+          <img src="/img/5.png" alt="VISIOART Productions — produtora audiovisual" className="logo-img" width="40" height="40" />
           <span className="brand-text">VISIOART PRODUCTIONS</span>
         </a>
         <ul className="nav-links">

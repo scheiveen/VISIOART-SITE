@@ -32,15 +32,15 @@ const ProcessSection = () => {
     <section id="processo" className="process-section" ref={sectionRef}>
       <div className="process-header">
         <span className="section-label">Como Trabalhamos</span>
-        <h2 className="section-title">Processo</h2>
+        <h2 className="section-title">Processo de Produção</h2>
       </div>
 
       <div className="process-steps">
         {mockProcess.map((step) => (
           <div key={step.id} className="process-step reveal">
             <div className="step-num">{step.num}</div>
-            <div className="step-name">{step.name}</div>
-            <div className="step-desc">{step.desc}</div>
+            <h3 className="step-name">{step.name}</h3>
+            <p className="step-desc">{step.desc}</p>
           </div>
         ))}
       </div>
