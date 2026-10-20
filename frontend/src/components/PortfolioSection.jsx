@@ -1,9 +1,50 @@
 import React, { useEffect, useRef, useState } from "react";
 import { mockPortfolio } from "../data/mock";
+import { BACKEND_URL } from "../lib/backendUrl";
 import "./PortfolioSection.css";
 
 // Destaque + grade 2x2; o restante aparece no "Mostrar mais".
 const INITIAL_VISIBLE = 5;
+const SITE_URL = "https://www.visioart.art/";
+
+// A lista vem do /admin (API). `mockPortfolio` é só a reserva exibida
+// enquanto a API responde (o backend no Render pode levar ~1 min para acordar).
+const fromApi = (item) => ({
+  id: item.id,
+  tag: item.tag,
+  title: item.title,
+  video: item.video_url,
+  thumbnail: item.thumbnail_url,
+  featured: item.featured,
+  duration: item.duration,
+  uploadDate: item.created_at,
+});
+
+const isoDuration = (seconds) =>
+  seconds ? `PT${Math.floor(seconds / 60)}M${Math.round(seconds % 60)}S` : undefined;
+
+function usePortfolioJsonLd(items) {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": items.map((item) => ({
+        "@type": "VideoObject",
+        name: `${item.tag} — ${item.title}`,
+        description: `${item.tag}: ${item.title}. Filme produzido pela VISIOART.`,
+        thumbnailUrl: item.thumbnail,
+        contentUrl: item.video,
+        uploadDate: item.uploadDate,
+        duration: isoDuration(item.duration),
+        inLanguage: "pt-BR",
+        publisher: { "@id": `${SITE_URL}#organizacao` },
+      })),
+    });
+    document.head.appendChild(script);
+    return () => script.remove();
+  }, [items]);
+}
 
 const PortfolioSection = () => {
   const sectionRef = useRef(null);
@@ -11,11 +52,27 @@ const PortfolioSection = () => {
   const [visibleItemIds, setVisibleItemIds] = useState([]);
   const [videoReadyIds, setVideoReadyIds] = useState([]);
   const [showAll, setShowAll] = useState(false);
+  const [items, setItems] = useState(mockPortfolio);
 
-  const hasMore = mockPortfolio.length > INITIAL_VISIBLE;
-  const displayedItems = showAll
-    ? mockPortfolio
-    : mockPortfolio.slice(0, INITIAL_VISIBLE);
+  useEffect(() => {
+    let cancelled = false;
+    fetch(`${BACKEND_URL}/api/portfolio`)
+      .then((res) => (res.ok ? res.json() : []))
+      .then((data) => {
+        if (!cancelled && data.length > 0) setItems(data.map(fromApi));
+      })
+      .catch(() => {
+        // Mantém a lista reserva.
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  usePortfolioJsonLd(items);
+
+  const hasMore = items.length > INITIAL_VISIBLE;
+  const displayedItems = showAll ? items : items.slice(0, INITIAL_VISIBLE);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -56,7 +113,7 @@ const PortfolioSection = () => {
       revealObserver.disconnect();
       itemObserver.disconnect();
     };
-  }, [showAll]);
+  }, [showAll, items]);
 
   useEffect(() => {
     if (visibleItemIds.length === 0) return;
@@ -157,7 +214,7 @@ const PortfolioSection = () => {
           >
             {showAll
               ? "Mostrar menos"
-              : `Mostrar mais (${mockPortfolio.length - INITIAL_VISIBLE})`}
+              : `Mostrar mais (${items.length - INITIAL_VISIBLE})`}
           </button>
         </div>
       )}

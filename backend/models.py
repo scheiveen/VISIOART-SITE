@@ -145,3 +145,43 @@ class MaterialPublic(BaseModel):
     thumbnail_url: Optional[str] = None
     download_allowed: bool = False
     published_at: datetime
+
+
+# ---------- Portfólio (site público) ----------
+
+class PortfolioCreate(BaseModel):
+    tag: str = Field(min_length=1, max_length=60)
+    title: str = Field(min_length=1, max_length=120)
+    public_id: str
+    version: str
+    thumb_offset: float = Field(default=2, ge=0)
+    duration: Optional[float] = None
+    featured: bool = False
+
+
+class PortfolioUpdate(BaseModel):
+    tag: Optional[str] = Field(default=None, min_length=1, max_length=60)
+    title: Optional[str] = Field(default=None, min_length=1, max_length=120)
+    thumb_offset: Optional[float] = Field(default=None, ge=0)
+    featured: Optional[bool] = None
+
+
+class PortfolioReorder(BaseModel):
+    ids: list[str]
+
+
+class PortfolioPublic(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    id: str
+    tag: str
+    title: str
+    public_id: str
+    version: str
+    thumb_offset: float = 2
+    duration: Optional[float] = None
+    featured: bool = False
+    order: int
+    created_at: datetime
+    video_url: str
+    thumbnail_url: str

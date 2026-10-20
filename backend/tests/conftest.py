@@ -40,6 +40,7 @@ async def clear_db(db):
     await db.users.delete_many({})
     await db.projects.delete_many({})
     await db.materials.delete_many({})
+    await db.portfolio.delete_many({})
 
 
 @pytest.fixture

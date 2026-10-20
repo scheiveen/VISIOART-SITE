@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { FileVideo, FolderKanban, LayoutDashboard, LogOut, Menu, Users } from "lucide-react";
+import { Clapperboard, FileVideo, FolderKanban, LayoutDashboard, LogOut, Menu, Users } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet";
 import { Toaster } from "../components/ui/sonner";
@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { to: "/admin/clientes", label: "Clientes", icon: Users },
   { to: "/admin/projetos", label: "Projetos", icon: FolderKanban },
   { to: "/admin/materiais", label: "Materiais", icon: FileVideo },
+  { to: "/admin/portfolio", label: "Portfólio do site", icon: Clapperboard },
 ];
 
 function NavLinks({ onNavigate }) {

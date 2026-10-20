@@ -63,7 +63,8 @@ export const mockServices = [
   },
 ];
 
-// Vídeos servidos como MP4 (H.264) via Cloudinary: os originais .mov tinham
+// Reserva do portfólio: a lista oficial é gerenciada em /admin/portfolio e
+// vem da API. Vídeos servidos como MP4 (H.264) via Cloudinary: os originais .mov tinham
 // 35–85 MB cada e não tocam em todos os navegadores. A miniatura é um frame
 // extraído do próprio vídeo (segundo `offset`).
 const CLOUDINARY_VIDEO = "https://res.cloudinary.com/dzv2rrgj0/video/upload";
@@ -78,6 +79,7 @@ export const mockPortfolio = [
     title: "João & Julia",
     video: portfolioVideo("v1778846014/PEDIDO_JOA%CC%83O_HORIZONTAL_SITE_ihq4yw"),
     thumbnail: portfolioThumb("v1778846014/PEDIDO_JOA%CC%83O_HORIZONTAL_SITE_ihq4yw"),
+    uploadDate: "2026-05-15",
     featured: true,
   },
   {
@@ -86,6 +88,8 @@ export const mockPortfolio = [
     title: "Leticia & Wagner",
     video: portfolioVideo("v1792534708/LETICIA_WAGNER_SITE"),
     thumbnail: portfolioThumb("v1792534708/LETICIA_WAGNER_SITE", 45),
+    uploadDate: "2026-10-20",
+    duration: 146,
   },
   {
     id: 2,
@@ -93,6 +97,7 @@ export const mockPortfolio = [
     title: "Secretaria de Saúde de Alfredo Wagner",
     video: portfolioVideo("v1778846438/SAUDE_SITE_jxin5y"),
     thumbnail: portfolioThumb("v1778846438/SAUDE_SITE_jxin5y"),
+    uploadDate: "2026-05-15",
   },
   {
     id: 3,
@@ -100,6 +105,7 @@ export const mockPortfolio = [
     title: "Isabela",
     video: portfolioVideo("v1778846015/ENSAIO_ISA_SITE_lbtnq2"),
     thumbnail: portfolioThumb("v1778846015/ENSAIO_ISA_SITE_lbtnq2"),
+    uploadDate: "2026-05-15",
   },
   {
     id: 4,
@@ -107,6 +113,7 @@ export const mockPortfolio = [
     title: "Marina & Andrigo",
     video: portfolioVideo("v1780511947/MARINA_SITE_f3txsw"),
     thumbnail: portfolioThumb("v1780511947/MARINA_SITE_f3txsw"),
+    uploadDate: "2026-06-03",
   },
   {
     id: 5,
@@ -114,6 +121,7 @@ export const mockPortfolio = [
     title: "Recanto das Américas Wellness Resort & Spa",
     video: portfolioVideo("v1778846002/RESORT_SITE_1_sohhwy"),
     thumbnail: portfolioThumb("v1778846002/RESORT_SITE_1_sohhwy"),
+    uploadDate: "2026-05-15",
   },
 ];
 

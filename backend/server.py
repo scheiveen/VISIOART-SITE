@@ -15,6 +15,7 @@ from rate_limit import limiter
 from routers import admin as admin_router
 from routers import auth as auth_router
 from routers import client_portal as client_portal_router
+from routers import portfolio as portfolio_router
 
 # Create the main app without a prefix
 app = FastAPI()
@@ -70,6 +71,8 @@ app.include_router(api_router)
 app.include_router(auth_router.router)
 app.include_router(admin_router.router)
 app.include_router(client_portal_router.router)
+app.include_router(portfolio_router.public_router)
+app.include_router(portfolio_router.router)
 
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
@@ -110,6 +113,10 @@ async def warn_default_jwt_secret():
             "JWT_SECRET não definido — usando valor padrão inseguro. "
             "Defina JWT_SECRET no .env antes de ir para produção."
         )
+
+@app.on_event("startup")
+async def seed_portfolio():
+    await portfolio_router.seed_default_portfolio()
 
 @app.on_event("shutdown")
 async def shutdown_db_client():

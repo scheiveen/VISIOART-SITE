@@ -7,6 +7,7 @@ import AdminLoginPage from "./AdminLoginPage";
 import ClientsPage from "./ClientsPage";
 import DashboardPage from "./DashboardPage";
 import MaterialsPage from "./MaterialsPage";
+import PortfolioPage from "./PortfolioPage";
 import ProjectsPage from "./ProjectsPage";
 
 export default function AdminApp() {
@@ -25,6 +26,7 @@ export default function AdminApp() {
           <Route path="clientes" element={<ClientsPage />} />
           <Route path="projetos" element={<ProjectsPage />} />
           <Route path="materiais" element={<MaterialsPage />} />
+          <Route path="portfolio" element={<PortfolioPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/admin" replace />} />
       </Routes>
