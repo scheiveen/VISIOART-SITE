@@ -136,6 +136,36 @@
   max-width: 16rem;
 }
 
+.portfolio-more {
+  max-width: 1400px;
+  margin: 3rem auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+.portfolio-more-btn {
+  font-family: var(--body);
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: transparent;
+  border: 1px solid rgba(245, 242, 238, 0.25);
+  padding: 1.1rem 2.75rem;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background 0.3s ease;
+}
+
+.portfolio-more-btn:hover,
+.portfolio-more-btn:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(200, 184, 154, 0.05);
+}
+
 @media (max-width: 1024px) {
   .portfolio-section {
     padding: 6rem 2rem;

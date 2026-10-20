@@ -2,11 +2,20 @@ import React, { useEffect, useRef, useState } from "react";
 import { mockPortfolio } from "../data/mock";
 import "./PortfolioSection.css";
 
+// Destaque + grade 2x2; o restante aparece no "Mostrar mais".
+const INITIAL_VISIBLE = 5;
+
 const PortfolioSection = () => {
   const sectionRef = useRef(null);
   const videoRefs = useRef(new Map());
   const [visibleItemIds, setVisibleItemIds] = useState([]);
   const [videoReadyIds, setVideoReadyIds] = useState([]);
+  const [showAll, setShowAll] = useState(false);
+
+  const hasMore = mockPortfolio.length > INITIAL_VISIBLE;
+  const displayedItems = showAll
+    ? mockPortfolio
+    : mockPortfolio.slice(0, INITIAL_VISIBLE);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -47,7 +56,7 @@ const PortfolioSection = () => {
       revealObserver.disconnect();
       itemObserver.disconnect();
     };
-  }, []);
+  }, [showAll]);
 
   useEffect(() => {
     if (visibleItemIds.length === 0) return;
@@ -73,6 +82,13 @@ const PortfolioSection = () => {
     );
   };
 
+  const toggleShowAll = () => {
+    if (showAll) {
+      sectionRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+    setShowAll((current) => !current);
+  };
+
   const isVideoVisible = (id) => visibleItemIds.includes(String(id));
   const isVideoReady = (id) => videoReadyIds.includes(String(id));
 
@@ -86,7 +102,7 @@ const PortfolioSection = () => {
       </div>
 
       <div className="portfolio-grid">
-        {mockPortfolio.map((item) => (
+        {displayedItems.map((item) => (
           <article
             key={item.id}
             data-id={item.id}
@@ -130,6 +146,21 @@ const PortfolioSection = () => {
           </article>
         ))}
       </div>
+
+      {hasMore && (
+        <div className="portfolio-more">
+          <button
+            type="button"
+            className="portfolio-more-btn"
+            onClick={toggleShowAll}
+            aria-expanded={showAll}
+          >
+            {showAll
+              ? "Mostrar menos"
+              : `Mostrar mais (${mockPortfolio.length - INITIAL_VISIBLE})`}
+          </button>
+        </div>
+      )}
     </section>
   );
 };

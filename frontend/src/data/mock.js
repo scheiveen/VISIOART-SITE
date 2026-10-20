@@ -65,11 +65,11 @@ export const mockServices = [
 
 // Vídeos servidos como MP4 (H.264) via Cloudinary: os originais .mov tinham
 // 35–85 MB cada e não tocam em todos os navegadores. A miniatura é um frame
-// extraído do próprio vídeo.
+// extraído do próprio vídeo (segundo `offset`).
 const CLOUDINARY_VIDEO = "https://res.cloudinary.com/dzv2rrgj0/video/upload";
 const portfolioVideo = (id) => `${CLOUDINARY_VIDEO}/q_auto,w_1280/${id}.mp4`;
-const portfolioThumb = (id) =>
-  `${CLOUDINARY_VIDEO}/so_2,w_1200,h_675,c_fill,q_auto,f_auto/${id}.jpg`;
+const portfolioThumb = (id, offset = 2) =>
+  `${CLOUDINARY_VIDEO}/so_${offset},w_1200,h_675,c_fill,q_auto,f_auto/${id}.jpg`;
 
 export const mockPortfolio = [
   {
@@ -79,6 +79,13 @@ export const mockPortfolio = [
     video: portfolioVideo("v1778846014/PEDIDO_JOA%CC%83O_HORIZONTAL_SITE_ihq4yw"),
     thumbnail: portfolioThumb("v1778846014/PEDIDO_JOA%CC%83O_HORIZONTAL_SITE_ihq4yw"),
     featured: true,
+  },
+  {
+    id: 6,
+    tag: "Casamento",
+    title: "Leticia & Wagner",
+    video: portfolioVideo("v1792534708/LETICIA_WAGNER_SITE"),
+    thumbnail: portfolioThumb("v1792534708/LETICIA_WAGNER_SITE", 45),
   },
   {
     id: 2,
