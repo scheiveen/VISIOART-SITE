@@ -12,6 +12,7 @@ import ProcessSection from './components/ProcessSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import AudioPlayer from './components/AudioPlayer';
+import WhatsAppButton from './components/WhatsAppButton';
 import './App.css';
 
 const ClientApp = lazy(() => import('./portal/ClientApp'));
@@ -22,6 +23,7 @@ function HomePage() {
     <div className="App">
       <CustomCursor />
       <AudioPlayer />
+      <WhatsAppButton />
       <Navbar />
       <main>
         <HeroSection />
