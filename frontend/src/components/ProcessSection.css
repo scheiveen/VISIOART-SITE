@@ -1,88 +1,272 @@
 .process-section {
+  position: relative;
   padding: 8rem 4rem;
-  background: var(--gray-dark);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(200, 184, 154, 0.08), transparent 60%),
+    var(--gray-dark);
   border-top: 1px solid rgba(245, 242, 238, 0.1);
+  overflow: hidden;
+}
+
+/* Marca d'água discreta, no mesmo espírito do hero */
+.process-section::before {
+  content: "PROCESSO";
+  position: absolute;
+  right: -2rem;
+  top: 3rem;
+  font-family: var(--display);
+  font-size: clamp(8rem, 22vw, 22rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(245, 242, 238, 0.04);
+  pointer-events: none;
+  user-select: none;
 }
 
 .process-header {
+  position: relative;
   max-width: 1400px;
-  margin: 0 auto 4rem;
+  margin: 0 auto 5rem;
 }
 
-.process-steps {
+.process-intro {
+  max-width: 34rem;
+  margin-top: 1.5rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  line-height: 1.6;
+  color: rgba(245, 242, 238, 0.65);
+}
+
+/* ---------- Trilha (desktop: horizontal) ---------- */
+
+.process-track {
+  --marker: 52px;
+  position: relative;
   max-width: 1400px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.process-line {
+  position: absolute;
+  top: calc(var(--marker) / 2);
+  left: calc(10% - 1rem);
+  right: calc(10% - 1rem);
+  height: 1px;
+  background: rgba(245, 242, 238, 0.1);
+}
+
+.process-line-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(200, 184, 154, 0.2), var(--accent));
+  box-shadow: 0 0 12px rgba(200, 184, 154, 0.5);
+  transform-origin: left center;
+  transform: scaleX(var(--progress, 0));
+  transition: transform 0.15s linear;
 }
 
 .process-step {
-  display: grid;
-  grid-template-columns: 120px 1fr 1fr;
+  position: relative;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 3rem;
-  padding: 2.5rem 0;
-  border-bottom: 1px solid rgba(245, 242, 238, 0.05);
-  transition: background 0.3s ease;
-  cursor: pointer;
+  text-align: center;
+  padding: 0 0.5rem 2rem;
 }
 
-.process-step:hover {
-  background: rgba(200, 184, 154, 0.02);
+/* Entrada escalonada: só opacidade/posição atrasam, não o "acender". */
+.process-step.reveal {
+  transition:
+    opacity 0.8s ease calc(0.15s + var(--i) * 0.12s),
+    transform 0.8s ease calc(0.15s + var(--i) * 0.12s);
+}
+
+.step-marker {
+  position: relative;
+  z-index: 1;
+  width: var(--marker);
+  height: var(--marker);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-dark);
+  border: 1px solid rgba(245, 242, 238, 0.15);
+  color: rgba(245, 242, 238, 0.45);
+  transition:
+    border-color 0.5s ease,
+    color 0.5s ease,
+    background 0.5s ease,
+    box-shadow 0.5s ease,
+    transform 0.5s ease;
 }
 
 .step-num {
+  margin-top: 2rem;
   font-family: var(--display);
-  font-size: clamp(3rem, 5vw, 5rem);
-  color: var(--accent);
-  opacity: 0.2;
-  transition: opacity 0.3s ease;
-}
-
-.process-step:hover .step-num {
-  opacity: 1;
+  font-size: clamp(3.5rem, 5vw, 5.5rem);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(200, 184, 154, 0.35);
+  transition:
+    color 0.5s ease,
+    -webkit-text-stroke-color 0.5s ease,
+    transform 0.5s ease;
 }
 
 .step-name {
+  margin-top: 1rem;
   font-family: var(--serif);
-  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-size: clamp(1.35rem, 1.8vw, 1.75rem);
   font-weight: 300;
-  color: var(--white);
+  color: rgba(245, 242, 238, 0.75);
+  transition: color 0.5s ease;
 }
 
 .step-desc {
-  font-size: 0.95rem;
+  margin-top: 0.75rem;
+  max-width: 15rem;
+  font-size: 0.9rem;
   line-height: 1.7;
   color: var(--gray-light);
+  transition: color 0.5s ease;
 }
+
+/* Etapas já percorridas */
+.process-step.is-done .step-marker {
+  border-color: rgba(200, 184, 154, 0.5);
+  color: var(--accent);
+}
+
+.process-step.is-done .step-num {
+  -webkit-text-stroke-color: rgba(200, 184, 154, 0.6);
+}
+
+/* Etapa atual */
+.process-step.is-active .step-marker,
+.process-step:hover .step-marker {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--black);
+  box-shadow: 0 0 0 8px rgba(200, 184, 154, 0.12), 0 0 30px rgba(200, 184, 154, 0.35);
+  transform: scale(1.08);
+}
+
+.process-step.is-active .step-num,
+.process-step:hover .step-num {
+  color: var(--accent);
+  -webkit-text-stroke-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.process-step.is-active .step-name,
+.process-step:hover .step-name {
+  color: var(--white);
+}
+
+.process-step.is-active .step-desc,
+.process-step:hover .step-desc {
+  color: rgba(245, 242, 238, 0.75);
+}
+
+/* ---------- Tablet / celular: trilha vertical ---------- */
 
 @media (max-width: 1024px) {
   .process-section {
     padding: 6rem 2rem;
   }
 
-  .process-step {
-    grid-template-columns: 80px 1fr;
-    gap: 2rem;
+  .process-header {
+    margin-bottom: 3.5rem;
   }
 
-  .step-desc {
-    grid-column: 2;
-  }
-}
-
-@media (max-width: 768px) {
-  .process-step {
+  .process-track {
+    --marker: 44px;
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 2rem 0;
+    gap: 0;
+  }
+
+  .process-line {
+    top: calc(var(--marker) / 2);
+    bottom: calc(var(--marker) / 2);
+    left: calc(var(--marker) / 2);
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .process-line-fill {
+    background: linear-gradient(to bottom, rgba(200, 184, 154, 0.2), var(--accent));
+    transform-origin: center top;
+    transform: scaleY(var(--progress, 0));
+  }
+
+  .process-step {
+    display: grid;
+    grid-template-columns: var(--marker) auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 1.25rem;
+    align-items: center;
+    text-align: left;
+    padding: 0 0 2.75rem;
+  }
+
+  .step-marker {
+    grid-row: 1;
+    grid-column: 1;
   }
 
   .step-num {
-    font-size: 2.5rem;
+    grid-row: 1;
+    grid-column: 2;
+    margin-top: 0;
+    font-size: 2.75rem;
+  }
+
+  .step-name {
+    grid-row: 1;
+    grid-column: 3;
+    margin-top: 0;
   }
 
   .step-desc {
-    grid-column: 1;
+    grid-row: 2;
+    grid-column: 2 / -1;
+    max-width: none;
+    margin-top: 0.5rem;
+  }
+
+  .process-step.is-active .step-num,
+  .process-step:hover .step-num {
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .process-section {
+    padding: 5rem 1.25rem;
+  }
+
+  .step-num {
+    font-size: 2.25rem;
+  }
+
+  .step-name {
+    font-size: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-line-fill,
+  .step-marker,
+  .step-num {
+    transition: none;
   }
 }

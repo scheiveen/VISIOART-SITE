@@ -1,4 +1,5 @@
-/* Mesmo visual do .audio-control (AudioPlayer.css), uma posição acima dele. */
+/* Mesmo visual do .audio-control (AudioPlayer.css), uma posição acima dele.
+   O modal do formulário usa os estilos de WhatsAppForm.css. */
 .whatsapp-float {
   position: fixed;
   right: 2rem;
@@ -13,6 +14,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
