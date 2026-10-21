@@ -92,7 +92,9 @@
 
 .hero-title {
   font-family: var(--display);
-  font-size: clamp(5rem, 14vw, 13rem);
+  /* Limitado também pela altura da tela: o hero inteiro (título, subtítulo
+     e botão) precisa caber na primeira dobra. */
+  font-size: clamp(3.5rem, min(8vw, 12vh), 8.5rem);
   line-height: 0.88;
   letter-spacing: -0.01em;
   margin-bottom: 1.5rem;
@@ -140,6 +142,6 @@
   }
 
   .hero-title {
-    font-size: clamp(3rem, 12vw, 5rem);
+    font-size: clamp(2.5rem, min(12vw, 9vh), 4.5rem);
   }
 }
