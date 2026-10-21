@@ -26,8 +26,8 @@ const HeroSection = () => {
       <div className="hero-content">
         <span className="hero-eyebrow">PRODUTORA AUDIOVISUAL · SANTA CATARINA</span>
         <h1 className="hero-title">
-          Transformamos histórias reais em{" "}
-          <em>filmes que permanecem por gerações</em>
+          <span className="hero-title-main">Transformamos histórias reais</span>{" "}
+          <em>em filmes que permanecem por gerações</em>
         </h1>
         <p className="hero-subtitle">
           Porque algumas histórias merecem ser lembradas para sempre
