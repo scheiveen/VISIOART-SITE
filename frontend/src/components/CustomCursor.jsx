@@ -15,25 +15,19 @@ const CustomCursor = () => {
       }, 50);
     };
 
-    const handleMouseEnter = () => setIsActive(true);
-    const handleMouseLeave = () => setIsActive(false);
-
-    // Add event listeners to interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .portfolio-item, .service-card, .process-step');
-    
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', handleMouseEnter);
-      el.addEventListener('mouseleave', handleMouseLeave);
-    });
+    // Delegação no document: também pega elementos que aparecem depois
+    // (modal do WhatsApp, filmes vindos da API, "Mostrar mais").
+    const INTERACTIVE = 'a, button, input, textarea, label, .portfolio-item, .service-card, .process-step';
+    const handleMouseOver = (e) => {
+      setIsActive(Boolean(e.target.closest?.(INTERACTIVE)));
+    };
 
     window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseover', handleMouseOver);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      interactiveElements.forEach(el => {
-        el.removeEventListener('mouseenter', handleMouseEnter);
-        el.removeEventListener('mouseleave', handleMouseLeave);
-      });
+      document.removeEventListener('mouseover', handleMouseOver);
     };
   }, []);
 

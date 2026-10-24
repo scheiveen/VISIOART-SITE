@@ -140,7 +140,8 @@ a {
   position: fixed;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 9999;
+  /* Acima de tudo, inclusive do modal do WhatsApp (z-index 10000). */
+  z-index: 10050;
   mix-blend-mode: difference;
 }
 
